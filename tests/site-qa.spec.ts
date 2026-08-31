@@ -54,6 +54,21 @@ test('Book Training journey reaches the Square-ready page', async ({ page }) => 
   await expect(page.getByRole('button', { name: 'Square Link Pending' })).toHaveCount(2);
 });
 
+test('training-focus selection expands the matching item and background', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/', { waitUntil: 'networkidle' });
+  const focus = page.locator('[data-training-focus]');
+  const triggers = focus.getByRole('button');
+  await expect(triggers).toHaveCount(3);
+  await expect(triggers.nth(0)).toHaveAttribute('aria-expanded', 'true');
+
+  await triggers.nth(1).click();
+  await expect(triggers.nth(0)).toHaveAttribute('aria-expanded', 'false');
+  await expect(triggers.nth(1)).toHaveAttribute('aria-expanded', 'true');
+  await expect(focus.locator('.focus-background').nth(1)).toHaveClass(/is-active/);
+  await expect(focus.getByRole('link', { name: 'View Wide Receiver Skills' })).toHaveAttribute('href', '/training/wide-receiver/');
+});
+
 for (const width of [320, 375, 390, 768, 1024, 1440]) {
   test(`homepage screenshot and reflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 });
