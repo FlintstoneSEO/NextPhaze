@@ -2,7 +2,7 @@
 _schema: page_builder
 title: Coach Carrington Thompson | NextPhaze Nashville
 description: Meet NextPhaze coach Carrington Thompson, former Western Michigan
-preload_image: /Project Source/Images/Carrington Action Shot2.PNG
+preload_image: /uploads/image-of-carrington.png
 content_blocks:
   - _type: coach_hero
     eyebrow: Coach Carrington Thompson
