@@ -137,6 +137,9 @@ file_config:
       booking_pending_label: { type: text }
       booking_pending_note: { type: textarea }
       footer_copy: { type: textarea }
+      contact_name: { type: text }
+      contact_email: { type: email }
+      contact_phone: { type: text }
       footer_navigation:
         type: array
         options: { structures: _structures.navigation_items }

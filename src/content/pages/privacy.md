@@ -21,4 +21,4 @@ The site links to independent sources such as Western Michigan and Local Sports 
 
 ## Contact
 
-A public privacy contact has not yet been supplied. The site owner must add verified contact information before collecting inquiries or launching paid booking.
+For questions about this policy or how NextPhaze handles information, contact Coach Carrington Thompson at [carrington.j.Thompson15@gmail.com](mailto:carrington.j.Thompson15@gmail.com) or [810-869-8554](tel:+18108698554).

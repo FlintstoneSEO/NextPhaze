@@ -13,6 +13,9 @@
   "booking_pending_label": "Square Link Pending",
   "booking_pending_note": "Online scheduling will activate when the Square booking link is connected.",
   "footer_copy": "Performance training built for the next phase in Nashville, Tennessee.",
+  "contact_name": "Coach Carrington Thompson",
+  "contact_email": "carrington.j.Thompson15@gmail.com",
+  "contact_phone": "810-869-8554",
   "footer_navigation": [
     { "label": "Training", "href": "/training/" },
     { "label": "Coach Carrington", "href": "/coach-carrington/" },
@@ -24,7 +27,7 @@
     { "slug": "group", "name": "Group Training", "short_name": "Group", "price": "$30", "price_suffix": "per session", "href": "/training/group/", "summary": "Train in a competitive group setting while building movement, skill, and disciplined habits.", "link_prefix": "View", "link_suffix": "Training" }
   ],
   "focus_areas": [
-    { "slug": "speed-agility", "name": "Speed and Agility", "href": "/training/speed-agility/", "summary": "Acceleration, footwork, body control, and change of direction for movement that carries into sport." },
-    { "slug": "wide-receiver", "name": "Wide Receiver Skills", "href": "/training/wide-receiver/", "summary": "Stance, releases, route detail, catching, and position movement taught by an experienced receiver." }
+    { "slug": "speed-agility", "name": "Speed and Agility", "href": "/training/speed-agility/", "summary": "Acceleration, footwork, body control, and change of direction for movement that carries into sport.", "image": "/images/training-lane.webp" },
+    { "slug": "wide-receiver", "name": "Wide Receiver Skills", "href": "/training/wide-receiver/", "summary": "Stance, releases, route detail, catching, and position movement taught by an experienced receiver.", "image": "/images/receiver-catch.webp" }
   ]
 }

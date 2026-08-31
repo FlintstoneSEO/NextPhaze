@@ -1,13 +1,86 @@
 ---
 import { ArrowRight } from '@lucide/astro';
 import { site } from '@/data/site';
-import HomeFocusAreas from '@/components/shared/HomeFocusAreas.astro';
-const { title, copy, image, image_alt, featured_title, featured_copy, featured_href } = Astro.props;
+const { title, copy, image, featured_title, featured_copy, featured_href, featured_image = '/images/training-acceleration.webp' } = Astro.props;
+const areas = [
+  ...site.focus_areas,
+  {
+    slug: 'focused-coaching',
+    name: featured_title,
+    href: featured_href,
+    summary: featured_copy,
+    image: featured_image || image
+  }
+];
 ---
-<section class="content-section training-focus" aria-labelledby="focus-title"><div class="shell">
+<section class="content-section training-focus training-focus--interactive" aria-labelledby="focus-title" data-training-focus>
+  <div class="focus-backgrounds" aria-hidden="true">
+    {areas.map((area: any, index: number) => <img class:list={['focus-background', { 'is-active': index === 0 }]} src={area.image} width="1600" height="1067" alt="" loading={index === 0 ? 'lazy' : 'lazy'} />)}
+  </div>
+  <div class="shell">
   <div class="section-heading"><h2 id="focus-title" data-editable="text" data-prop="title">{title}</h2><p data-editable="text" data-prop="copy">{copy}</p></div>
-  <div class="focus-layout"><figure class="focus-image"><img src={image} width="1536" height="1024" alt={image_alt} loading="lazy" data-editable="image" data-prop-src="image" data-prop-alt="image_alt" /></figure><div class="focus-list">
-    <editable-component data-component="home_focus_areas" data-prop="@data[site]"><HomeFocusAreas {...site} /></editable-component>
-    <a href={featured_href}><span class="focus-number" aria-hidden="true">03</span><div><h3 data-editable="text" data-prop="featured_title">{featured_title}</h3><p data-editable="text" data-prop="featured_copy">{featured_copy}</p></div><ArrowRight size={20} stroke-width={1.8} aria-hidden="true" /></a>
-  </div></div>
-</div></section>
+  <div class="focus-list focus-interactive-list">
+    <editable-component data-component="home_focus_areas" data-prop="@data[site]"><div class="contents" data-editable="array" data-prop="focus_areas">
+    {site.focus_areas.map((area: any, index: number) => {
+      const panelId = `focus-panel-${area.slug}`;
+      const titleId = `focus-item-title-${area.slug}`;
+      return <article class:list={['focus-item', { 'is-active': index === 0 }]} data-focus-item data-editable="array-item">
+        <button class="focus-trigger" type="button" aria-expanded={index === 0 ? 'true' : 'false'} aria-controls={panelId} data-focus-trigger>
+          <span class="focus-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <h3 id={titleId} data-editable="text" data-prop="name">{area.name}</h3>
+        </button>
+        <div class="focus-detail" id={panelId} role="region" aria-labelledby={titleId} aria-hidden={index === 0 ? 'false' : 'true'}>
+          <p data-editable="text" data-prop="summary">{area.summary}</p>
+        </div>
+        <a class="focus-link" href={area.href} aria-label={`View ${area.name}`}><ArrowRight size={22} stroke-width={1.8} aria-hidden="true" /></a>
+      </article>
+    })}
+    </div></editable-component>
+    <article class="focus-item" data-focus-item>
+      <button class="focus-trigger" type="button" aria-expanded="false" aria-controls="focus-panel-focused-coaching" data-focus-trigger>
+        <span class="focus-number" aria-hidden="true">03</span>
+        <h3 id="focus-item-title-focused-coaching" data-editable="text" data-prop="featured_title">{featured_title}</h3>
+      </button>
+      <div class="focus-detail" id="focus-panel-focused-coaching" role="region" aria-labelledby="focus-item-title-focused-coaching" aria-hidden="true">
+        <p data-editable="text" data-prop="featured_copy">{featured_copy}</p>
+      </div>
+      <a class="focus-link" href={featured_href} aria-label={`View ${featured_title}`}><ArrowRight size={22} stroke-width={1.8} aria-hidden="true" /></a>
+    </article>
+  </div>
+</div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-training-focus]').forEach((section) => {
+    const items = Array.from(section.querySelectorAll<HTMLElement>('[data-focus-item]'));
+    const backgrounds = Array.from(section.querySelectorAll<HTMLElement>('.focus-background'));
+    let selectedIndex = 0;
+
+    const show = (index: number) => {
+      items.forEach((item, itemIndex) => {
+        const active = itemIndex === index;
+        item.classList.toggle('is-active', active);
+        item.querySelector<HTMLButtonElement>('[data-focus-trigger]')?.setAttribute('aria-expanded', String(active));
+        item.querySelector<HTMLElement>('.focus-detail')?.setAttribute('aria-hidden', String(!active));
+      });
+      backgrounds.forEach((background, backgroundIndex) => background.classList.toggle('is-active', backgroundIndex === index));
+    };
+
+    items.forEach((item, index) => {
+      const trigger = item.querySelector<HTMLButtonElement>('[data-focus-trigger]');
+      trigger?.addEventListener('click', () => {
+        selectedIndex = index;
+        show(index);
+      });
+      item.addEventListener('focusin', () => show(index));
+      item.addEventListener('pointerenter', () => {
+        if (window.matchMedia('(hover: hover)').matches) show(index);
+      });
+    });
+
+    section.querySelector<HTMLElement>('.focus-interactive-list')?.addEventListener('pointerleave', () => show(selectedIndex));
+    section.addEventListener('focusout', () => requestAnimationFrame(() => {
+      if (!section.contains(document.activeElement)) show(selectedIndex);
+    }));
+  });
+</script>

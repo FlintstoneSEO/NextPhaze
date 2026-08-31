@@ -41,3 +41,7 @@ Decision: combine the Western Michigan #15 and 2016 championship credentials int
 Decision: replace the abstract right-side coach hero mark with the client-selected `Image of Carrington.png`. Preserve the `15 / Western Michigan` credential as a compact gold overlay, keeping the page's established Training Lab identity while giving the coach introduction a personal focal point.
 
 Revision: remove the `15 / Western Michigan` overlay after visual review. The portrait is stronger without competing text, while Carrington's Western Michigan history remains documented in the career content below.
+
+## 2026-08-31: Homepage training-focus interaction
+
+Decision: make the training-focus section image-backed and interactive. Selecting a focus opens its description and changes the full-section background image; desktop hover and keyboard focus provide a temporary preview, while a click or tap locks the selection. The directional arrow remains a separate link to the relevant training page so exploration does not unexpectedly navigate away.

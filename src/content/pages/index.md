@@ -25,6 +25,7 @@ content_blocks:
     featured_title: Focused Coaching
     featured_copy: Direct feedback and concentrated work in a one-on-one training format.
     featured_href: /training/one-on-one/
+    featured_image: /images/training-acceleration.webp
   - _type: process
     title: Purpose in every rep.
     copy: Training is organized around mechanics, repetition, and application. No invented performance scores. Just clear work and direct coaching.

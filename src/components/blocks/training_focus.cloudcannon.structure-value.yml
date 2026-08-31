@@ -11,6 +11,7 @@ value:
   featured_title:
   featured_copy:
   featured_href: /training/one-on-one/
+  featured_image: /images/training-acceleration.webp
 _inputs:
   title: { type: text }
   copy: { type: textarea }
@@ -19,3 +20,4 @@ _inputs:
   featured_title: { type: text }
   featured_copy: { type: textarea }
   featured_href: { type: text }
+  featured_image: { type: image }
