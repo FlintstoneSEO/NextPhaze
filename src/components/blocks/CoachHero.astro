@@ -1,8 +1,10 @@
 ---
 import { ArrowRight } from '@lucide/astro';
-const { eyebrow, title, copy, button_label, button_href, mark_number, mark_label } = Astro.props;
+const { eyebrow, title, copy, button_label, button_href, image, image_alt } = Astro.props;
 ---
 <section class="page-hero coach-hero"><div class="shell coach-hero-grid">
   <div class="page-hero-copy"><p class="eyebrow" data-editable="text" data-prop="eyebrow">{eyebrow}</p><h1 data-editable="text" data-prop="title">{title}</h1><p class="lede" data-editable="text" data-prop="copy">{copy}</p><a class="button" href={button_href}><editable-text data-prop="button_label">{button_label}</editable-text> <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" /></a></div>
-  <div class="coach-mark" aria-hidden="true"><span data-editable="text" data-prop="mark_number">{mark_number}</span><p data-editable="text" data-prop="mark_label">{mark_label}</p></div>
+  <figure class="coach-portrait">
+    <img src={image} alt={image_alt} width="550" height="671" fetchpriority="high" decoding="async" data-editable="image" data-prop="image" />
+  </figure>
 </div></section>

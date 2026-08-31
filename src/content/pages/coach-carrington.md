@@ -2,7 +2,7 @@
 _schema: page_builder
 title: Coach Carrington Thompson | NextPhaze Nashville
 description: Meet NextPhaze coach Carrington Thompson, former Western Michigan
-preload_image: /uploads/image-of-carrington.png
+preload_image: /images/carrington-coach-portrait.webp
 content_blocks:
   - _type: coach_hero
     eyebrow: Coach Carrington Thompson
@@ -11,8 +11,8 @@ content_blocks:
       background to training in Nashville.
     button_label: Book Training
     button_href: /book-training/
-    mark_number: '15'
-    mark_label: Western Michigan
+    image: /images/carrington-coach-portrait.webp
+    image_alt: Carrington Thompson smiling while seated with a young child at an indoor football venue
   - _type: career_stats
     title: Collegiate production across Northwood and Western Michigan.
     copy: These totals combine Carrington's verified Northwood and Western Michigan

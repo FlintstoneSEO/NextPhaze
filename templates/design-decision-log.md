@@ -35,3 +35,9 @@ Decision: complete the partial CloudCannon integration with a structured `pages`
 ## 2026-08-31: Homepage career proof imagery
 
 Decision: combine the Western Michigan #15 and 2016 championship credentials into one image-backed panel using the client-selected `Carrington Action Shot2.PNG`. Pair the 2018 MPIF championship and Offensive Rookie of the Year credential with `Carrington Action 5.png` in a second panel. Use dark lower scrims and responsive crops so the credentials remain readable without separating the photographs from their related career proof.
+
+## 2026-08-31: Coach page portrait
+
+Decision: replace the abstract right-side coach hero mark with the client-selected `Image of Carrington.png`. Preserve the `15 / Western Michigan` credential as a compact gold overlay, keeping the page's established Training Lab identity while giving the coach introduction a personal focal point.
+
+Revision: remove the `15 / Western Michigan` overlay after visual review. The portrait is stronger without competing text, while Carrington's Western Michigan history remains documented in the career content below.
