@@ -1,41 +1,49 @@
 ---
 _schema: page_builder
 title: Coach Carrington Thompson | NextPhaze Nashville
-description: Meet NextPhaze coach Carrington Thompson, former Western Michigan #15, MAC Champion and professional indoor football champion.
-preload_image:
+description: Meet NextPhaze coach Carrington Thompson, former Western Michigan
+preload_image: /Project Source/Images/Carrington Action Shot2.PNG
 content_blocks:
   - _type: coach_hero
     eyebrow: Coach Carrington Thompson
     title: Playing experience turned toward athlete development.
-    copy: Carrington brings a verified collegiate and professional indoor football background to training in Nashville.
+    copy: Carrington brings a verified collegiate and professional indoor football
+      background to training in Nashville.
     button_label: Book Training
     button_href: /book-training/
-    mark_number: "15"
+    mark_number: '15'
     mark_label: Western Michigan
   - _type: career_stats
     title: Collegiate production across Northwood and Western Michigan.
-    copy: These totals combine Carrington's verified Northwood and Western Michigan records.
+    copy: These totals combine Carrington's verified Northwood and Western Michigan
+      records.
     stats:
-      - value: "139"
+      - value: '139'
         label: Receptions
-      - value: "1,936"
+      - value: 1,936
         label: Receiving yards
-      - value: "18"
+      - value: '18'
         label: Receiving touchdowns
   - _type: career_story
     title: A path built through every phase.
-    copy: From Houston to Northwood, Western Michigan, a championship season, and professional indoor football, Carrington's path reflects continued development.
+    copy: From Houston to Northwood, Western Michigan, a championship season, and
+      professional indoor football, Carrington's path reflects continued
+      development.
     items:
       - title: Northwood University
-        copy: 89 receptions, 1,210 yards, and 10 touchdowns according to his official WMU biography.
+        copy: 89 receptions, 1,210 yards, and 10 touchdowns according to his official
+          WMU biography.
       - title: Western Michigan
-        copy: "#15 wide receiver with 50 receptions, 726 yards, and eight touchdowns across 2015 and 2016."
+        copy: '#15 wide receiver with 50 receptions, 726 yards, and eight touchdowns
+          across 2015 and 2016.'
       - title: 2016 Championship Season
         copy: MAC Champion and member of Western Michigan's Cotton Bowl team.
       - title: West Michigan Ironmen
-        copy: Professional indoor and arena football experience, 2018 MPIF Champion, and 2018 MPIF Offensive Rookie of the Year.
+        copy: Professional indoor and arena football experience, 2018 MPIF Champion, and
+          2018 MPIF Offensive Rookie of the Year.
       - title: NextPhaze
-        copy: Experience applied to athlete development through group and one-on-one training in Nashville.
+        copy: Experience applied to athlete development through group and one-on-one
+          training in Nashville.
   - _type: performance_callout
     eyebrow: Career performance vs. Eastern Michigan
     title: Eight catches. 177 yards. Two touchdowns.
@@ -54,8 +62,8 @@ content_blocks:
         href: https://localsportsjournal.com/2018/04/ironmen-hold-off-late-midway-rally-win-mpif-championship-game-68-44/
   - _type: booking_cta
     title: Bring experience into the work.
-    copy: Choose group or one-on-one training, review the price, and prepare to book through Square.
+    copy: Choose group or one-on-one training, review the price, and prepare to book
+      through Square.
     label: Book Training
     href: /book-training/
 ---
-
