@@ -1,0 +1,9 @@
+---
+import { site } from '@/data/site';
+import FocusIndexAreas from '@/components/shared/FocusIndexAreas.astro';
+const { title, image, image_alt } = Astro.props;
+---
+<section class="content-section focus-index-section" aria-labelledby="development-title"><div class="shell focus-index-grid">
+  <figure><img src={image} width="1536" height="1024" alt={image_alt} loading="lazy" data-editable="image" data-prop-src="image" data-prop-alt="image_alt" /></figure>
+  <div><h2 id="development-title" data-editable="text" data-prop="title">{title}</h2><editable-component data-component="focus_index_areas" data-prop="@data[site]"><FocusIndexAreas {...site} /></editable-component></div>
+</div></section>

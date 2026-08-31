@@ -1,0 +1,22 @@
+label: Coach hero
+icon: dashboard
+picker_preview: { text: [Coach hero], icon: [dashboard] }
+preview: { text: [{ key: title }, Coach hero], icon: [dashboard] }
+value:
+  _type: coach_hero
+  eyebrow:
+  title:
+  copy:
+  button_label: Book Training
+  button_href: /book-training/
+  mark_number:
+  mark_label:
+_inputs:
+  eyebrow: { type: text }
+  title: { type: text }
+  copy: { type: textarea }
+  button_label: { type: text }
+  button_href: { type: text }
+  mark_number: { type: text }
+  mark_label: { type: text }
+

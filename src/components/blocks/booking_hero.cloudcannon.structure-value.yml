@@ -1,0 +1,22 @@
+label: Booking hero
+icon: dashboard
+picker_preview: { text: [Booking hero], icon: [dashboard] }
+preview: { text: [{ key: title }, Booking hero], icon: [dashboard] }
+value:
+  _type: booking_hero
+  eyebrow:
+  title:
+  copy:
+  ready_title:
+  ready_copy:
+  pending_title:
+  pending_copy:
+_inputs:
+  eyebrow: { type: text }
+  title: { type: text }
+  copy: { type: textarea }
+  ready_title: { type: text }
+  ready_copy: { type: textarea }
+  pending_title: { type: text }
+  pending_copy: { type: textarea }
+

@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServicePage from '@/components/ServicePage.astro';
+import BookingCTA from '@/components/BookingCTA.astro';
+
+export async function getStaticPaths() {
+  const [services, focusAreas] = await Promise.all([getCollection('services'), getCollection('focus_areas')]);
+  return [...services, ...focusAreas].map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+const { page } = Astro.props;
+const content = page.data;
+---
+<BaseLayout title={content.title} description={content.description}>
+  <editable-component data-component="service_page" data-prop="service">
+    <ServicePage {...content.service} />
+  </editable-component>
+  <editable-component data-component="service_booking_cta" data-prop="cta">
+    <BookingCTA {...content.cta} />
+  </editable-component>
+</BaseLayout>

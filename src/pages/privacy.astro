@@ -1,19 +1,10 @@
 ---
 import { getEntry, render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-
-const page = await getEntry('legal', 'privacy');
-if (!page) throw new Error('Missing privacy content.');
+const page = await getEntry('pages', 'privacy');
+if (!page || page.data._schema !== 'legal') throw new Error('Missing privacy content.');
 const { Content } = await render(page);
 ---
-
 <BaseLayout title={`${page.data.title} | NextPhaze`} description={page.data.description}>
-  <main class="legal-page">
-    <div class="shell legal-shell">
-      <p class="eyebrow">Privacy</p>
-      <h1 data-editable="text" data-prop="title">{page.data.title}</h1>
-      <p class="lede" data-editable="text" data-prop="effective_date">Effective {page.data.effective_date}</p>
-      <article data-editable="text" data-type="block" data-prop="@content"><Content /></article>
-    </div>
-  </main>
+  <main class="legal-page"><div class="shell legal-shell"><p class="eyebrow" data-editable="text" data-prop="eyebrow">{page.data.eyebrow}</p><h1 data-editable="text" data-prop="title">{page.data.title}</h1><p class="lede"><editable-text data-prop="effective_label">{page.data.effective_label}</editable-text> <editable-text data-prop="effective_date">{page.data.effective_date}</editable-text></p><article data-editable="text" data-type="block" data-prop="@content"><Content /></article></div></main>
 </BaseLayout>

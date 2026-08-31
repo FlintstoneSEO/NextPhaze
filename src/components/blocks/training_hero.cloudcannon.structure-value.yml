@@ -1,0 +1,22 @@
+label: Training overview hero
+icon: fitness_center
+picker_preview: { text: [Training overview hero], icon: [fitness_center] }
+preview: { text: [{ key: title }, Training overview hero], icon: [fitness_center] }
+value:
+  _type: training_hero
+  eyebrow:
+  title:
+  copy:
+  button_label: Book Training
+  button_href: /book-training/
+  route_steps:
+    - label: Movement
+_inputs:
+  eyebrow: { type: text }
+  title: { type: text }
+  copy: { type: textarea }
+  button_label: { type: text }
+  button_href: { type: text }
+  route_steps:
+    type: array
+    options: { structures: _structures.route_steps }

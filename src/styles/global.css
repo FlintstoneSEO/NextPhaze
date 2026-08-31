@@ -1,3 +1,10 @@
+.page-blocks,
+.page-block,
+editable-component,
+.contents {
+  display: contents;
+}
+
 :root {
   color-scheme: light dark;
   --bg: #f2efe8;

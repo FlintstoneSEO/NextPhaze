@@ -1,0 +1,6 @@
+---
+const { title, copy, stats } = Astro.props;
+---
+<section class="career-stats" aria-labelledby="career-title"><div class="shell">
+  <div class="section-heading"><h2 id="career-title" data-editable="text" data-prop="title">{title}</h2><p data-editable="text" data-prop="copy">{copy}</p></div><div class="stat-grid" data-editable="array" data-prop="stats">{stats.map((stat: any) => <div data-editable="array-item"><strong data-editable="text" data-prop="value">{stat.value}</strong><span data-editable="text" data-prop="label">{stat.label}</span></div>)}</div>
+</div></section>

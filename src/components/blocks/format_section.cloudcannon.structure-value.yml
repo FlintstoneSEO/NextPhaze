@@ -1,0 +1,9 @@
+label: Training formats
+icon: fitness_center
+picker_preview: { text: [Training formats], icon: [fitness_center] }
+preview: { text: [{ key: title }, Training formats], icon: [fitness_center] }
+value: { _type: format_section, title: null, copy: null }
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+

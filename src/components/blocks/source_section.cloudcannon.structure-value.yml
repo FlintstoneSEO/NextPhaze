@@ -1,0 +1,17 @@
+label: Source links
+icon: link
+picker_preview: { text: [Source links], icon: [link] }
+preview: { text: [{ key: title }, Source links], icon: [link] }
+value:
+  _type: source_section
+  title:
+  copy:
+  links:
+    - label: Source name
+      href: https://example.com/
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+  links:
+    type: array
+    options: { structures: _structures.source_links }

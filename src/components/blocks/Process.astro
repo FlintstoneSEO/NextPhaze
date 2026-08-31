@@ -1,0 +1,9 @@
+---
+import { Route, Target, Timer } from '@lucide/astro';
+const { title, copy, items } = Astro.props;
+const icons = { target: Target, timer: Timer, route: Route };
+---
+<section class="process-section" aria-labelledby="process-title"><div class="shell process-grid">
+  <div class="process-title-block"><h2 id="process-title" data-editable="text" data-prop="title">{title}</h2><p data-editable="text" data-prop="copy">{copy}</p></div>
+  <div class="process-steps" data-editable="array" data-prop="items">{items.map((item: any) => { const Icon = icons[item.icon as keyof typeof icons] ?? Target; return <article data-editable="array-item"><Icon size={28} stroke-width={1.6} aria-hidden="true" /><h3 data-editable="text" data-prop="title">{item.title}</h3><p data-editable="text" data-prop="copy">{item.copy}</p></article>; })}</div>
+</div></section>

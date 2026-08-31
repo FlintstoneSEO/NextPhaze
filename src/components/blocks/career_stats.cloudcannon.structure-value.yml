@@ -1,0 +1,17 @@
+label: Career statistics
+icon: check_circle
+picker_preview: { text: [Career statistics], icon: [check_circle] }
+preview: { text: [{ key: title }, Career statistics], icon: [check_circle] }
+value:
+  _type: career_stats
+  title:
+  copy:
+  stats:
+    - value: "0"
+      label: Verified statistic
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+  stats:
+    type: array
+    options: { structures: _structures.stat_items }

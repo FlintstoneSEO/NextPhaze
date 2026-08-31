@@ -6,137 +6,371 @@ markdown:
   engine: commonmark
   options:
     gfm: true
+    table: false
+
+collection_groups:
+  - heading: Website
+    collections: [pages, services, focus_areas]
+  - heading: Shared content
+    collections: [data]
+
 collections_config:
   pages:
     path: src/content/pages
     url: "/[slug]/"
     icon: dashboard
-    _enabled_editors:
-      - visual
-      - data
+    _enabled_editors: [visual, content, data]
+    schemas:
+      page_builder:
+        path: .cloudcannon/schemas/page-builder.md
+        name: Page Builder
+        new_preview_url: /
+      legal:
+        path: .cloudcannon/schemas/legal.md
+        name: Policy Page
+        new_preview_url: /privacy/
+    add_options:
+      - name: Page Builder
+        schema: page_builder
+        icon: dashboard
+      - name: Policy Page
+        schema: legal
+        icon: policy
+        editor: content
     _inputs:
-      title:
-        type: text
-      description:
-        type: textarea
+      _schema: { hidden: true }
+      title: { type: text, comment: Browser and search-result title. }
+      description: { type: textarea, comment: Search-result description. }
+      preload_image: { type: image }
+      effective_date: { type: text }
+      effective_label: { type: text }
+      eyebrow: { type: text }
       content_blocks:
         type: array
         options:
-          structures: _structures.content_blocks
+          structures:
+            values_from_glob:
+              - /src/components/blocks/*.cloudcannon.structure-value.yml
+    _editables:
+      content:
+        bold: true
+        italic: true
+        link: true
+        bulletedlist: true
+        numberedlist: true
+        blockquote: true
+        format: "p h2 h3 h4"
+        image: false
+        removeformat: true
   services:
     path: src/content/services
     url: "/training/[slug]/"
     icon: fitness_center
-    _enabled_editors:
-      - visual
-      - data
-    _inputs:
-      title:
-        type: text
-      description:
-        type: textarea
-      image:
-        type: image
-      topics:
-        type: array
+    _enabled_editors: [visual, data]
+    schemas:
+      default:
+        path: .cloudcannon/schemas/service.md
+        name: Training Format
+        new_preview_url: /training/one-on-one/
+    add_options:
+      - name: Training Format
+        schema: default
+        icon: fitness_center
+    _inputs: &training_inputs
+      title: { type: text }
+      description: { type: textarea }
+      service:
+        type: object
         options:
-          structures: _structures.topic_items
+          structures: _structures.service_objects
+          preview: { icon: fitness_center }
+      cta:
+        type: object
+        options:
+          structures: _structures.cta_objects
+          preview: { icon: ads_click }
   focus_areas:
     path: src/content/focus_areas
     url: "/training/[slug]/"
     icon: directions_run
-    _enabled_editors:
-      - visual
-      - data
-    _inputs:
-      title:
-        type: text
-      description:
-        type: textarea
-      image:
-        type: image
-      topics:
-        type: array
-        options:
-          structures: _structures.topic_items
-  legal:
-    path: src/content/legal
-    url: "/[slug]/"
-    icon: policy
-    _enabled_editors:
-      - content
-      - data
-    _inputs:
-      title:
-        type: text
-      description:
-        type: textarea
-      effective_date:
-        type: datetime
+    _enabled_editors: [visual, data]
+    schemas:
+      default:
+        path: .cloudcannon/schemas/focus-area.md
+        name: Training Focus
+        new_preview_url: /training/speed-agility/
+    add_options:
+      - name: Training Focus
+        schema: default
+        icon: directions_run
+    _inputs: *training_inputs
   data:
     path: src/data
+    glob: ["**/*.json"]
     disable_url: true
     icon: settings
+    _enabled_editors: [data]
+
+data_config:
+  site:
+    path: src/data/site.json
+
+file_config:
+  - glob: src/data/site.json
     _inputs:
+      $:
+        type: object
+        options:
+          preview: { icon: settings }
+      name: { type: text }
+      short_name: { type: text }
+      market: { type: text }
       navigation:
         type: array
+        options: { structures: _structures.navigation_items }
+      header_cta:
+        type: object
         options:
           structures: _structures.navigation_items
+          preview: { icon: ads_click }
+      booking_ready_label: { type: text }
+      booking_pending_label: { type: text }
+      booking_pending_note: { type: textarea }
+      footer_copy: { type: textarea }
+      footer_navigation:
+        type: array
+        options: { structures: _structures.navigation_items }
+      training_options:
+        type: array
+        options: { structures: _structures.training_options }
+      focus_areas:
+        type: array
+        options: { structures: _structures.focus_area_items }
+
 _structures:
+  service_objects:
+    values:
+      - label: Training page content
+        icon: fitness_center
+        picker_preview: { text: [Training page content], icon: [fitness_center] }
+        preview:
+          text: [{ key: title }, Training page content]
+          icon: [fitness_center]
+          image: [{ key: image }]
+        value:
+          eyebrow:
+          title:
+          intro:
+          price:
+          price_suffix: per session
+          image:
+          image_alt:
+          primary_label: Book Training
+          primary_href: /book-training/
+          secondary_label: Explore Training
+          secondary_href: /training/
+          section_title:
+          section_copy:
+          topics:
+            - title: Training topic
+              copy: Describe what the work can include.
+          related_href:
+          related_label:
+        _inputs:
+          eyebrow: { type: text }
+          title: { type: text }
+          intro: { type: textarea }
+          price: { type: text }
+          price_suffix: { type: text }
+          image: { type: image }
+          image_alt: { type: text }
+          primary_label: { type: text }
+          primary_href: { type: text }
+          secondary_label: { type: text }
+          secondary_href: { type: text }
+          section_title: { type: text }
+          section_copy: { type: textarea }
+          topics:
+            type: array
+            options: { structures: _structures.topic_items }
+          related_href: { type: text }
+          related_label: { type: text }
   navigation_items:
     values:
       - label: Navigation link
         icon: link
-        picker_preview:
-          text:
-            - Navigation link
-          icon:
-            - link
+        picker_preview: { text: [Navigation link], icon: [link] }
         preview:
-          text:
-            - key: label
-            - Navigation link
-          icon:
-            - link
-        value:
-          label:
-          href:
+          text: [{ key: label }, Navigation link]
+          icon: [link]
+        value: { label: null, href: null }
+        _inputs:
+          label: { type: text }
+          href: { type: text }
   topic_items:
     values:
       - label: Training topic
         icon: check_circle
-        picker_preview:
-          text:
-            - Training topic
-          icon:
-            - check_circle
+        picker_preview: { text: [Training topic], icon: [check_circle] }
         preview:
-          text:
-            - key: title
-            - Training topic
-          icon:
-            - check_circle
-        value:
-          title:
-          copy:
-  content_blocks:
+          text: [{ key: title }, Training topic]
+          icon: [check_circle]
+        value: { title: null, copy: null }
+        _inputs:
+          title: { type: text }
+          copy: { type: textarea }
+  cta_objects:
     values:
-      - label: Call to action
+      - label: Booking call to action
         icon: ads_click
-        picker_preview:
-          text:
-            - Call to action
-          icon:
-            - ads_click
+        picker_preview: { text: [Booking call to action], icon: [ads_click] }
         preview:
-          text:
-            - key: title
-            - Call to action
-          icon:
-            - ads_click
+          text: [{ key: title }, Booking call to action]
+          icon: [ads_click]
         value:
-          _type: cta
           title:
           copy:
-          href: /book-training/
           label: Book Training
+          href: /book-training/
+        _inputs:
+          title: { type: text }
+          copy: { type: textarea }
+          label: { type: text }
+          href: { type: text }
+  training_options:
+    values:
+      - label: Training option
+        icon: fitness_center
+        picker_preview: { text: [Training option], icon: [fitness_center] }
+        preview:
+          text: [{ key: name }, Training option]
+          subtext: [{ key: price }]
+          icon: [fitness_center]
+        value: { slug: null, name: null, short_name: null, price: null, price_suffix: null, href: null, summary: null, link_prefix: null, link_suffix: null }
+        _inputs:
+          slug: { type: text }
+          name: { type: text }
+          short_name: { type: text }
+          price: { type: text }
+          price_suffix: { type: text }
+          href: { type: text }
+          summary: { type: textarea }
+          link_prefix: { type: text }
+          link_suffix: { type: text }
+  focus_area_items:
+    values:
+      - label: Development focus
+        icon: directions_run
+        picker_preview: { text: [Development focus], icon: [directions_run] }
+        preview:
+          text: [{ key: name }, Development focus]
+          icon: [directions_run]
+        value: { slug: null, name: null, href: null, summary: null }
+        _inputs:
+          slug: { type: text }
+          name: { type: text }
+          href: { type: text }
+          summary: { type: textarea }
+  process_items:
+    values:
+      - label: Process step
+        icon: check_circle
+        picker_preview: { text: [Process step], icon: [check_circle] }
+        preview:
+          text: [{ key: title }, Process step]
+          icon: [check_circle]
+        value: { icon: target, title: null, copy: null }
+        _inputs:
+          icon:
+            type: select
+            options: { values: [target, timer, route] }
+          title: { type: text }
+          copy: { type: textarea }
+  credential_items:
+    values:
+      - label: Credential
+        icon: check_circle
+        picker_preview: { text: [Credential], icon: [check_circle] }
+        preview:
+          text: [{ key: value }, Credential]
+          subtext: [{ key: label }]
+          icon: [check_circle]
+        value: { value: null, label: null }
+        _inputs:
+          value: { type: text }
+          label: { type: text }
+  faq_items:
+    values:
+      - label: Question and answer
+        icon: help
+        picker_preview: { text: [Question and answer], icon: [help] }
+        preview:
+          text: [{ key: question }, Question and answer]
+          icon: [help]
+        value: { question: null, answer: null }
+        _inputs:
+          question: { type: text }
+          answer: { type: textarea }
+  route_steps:
+    values:
+      - label: Route step
+        icon: directions_run
+        picker_preview: { text: [Route step], icon: [directions_run] }
+        preview:
+          text: [{ key: label }, Route step]
+          icon: [directions_run]
+        value: { label: null }
+        _inputs:
+          label: { type: text }
+  stat_items:
+    values:
+      - label: Statistic
+        icon: check_circle
+        picker_preview: { text: [Statistic], icon: [check_circle] }
+        preview:
+          text: [{ key: value }, Statistic]
+          subtext: [{ key: label }]
+          icon: [check_circle]
+        value: { value: null, label: null }
+        _inputs:
+          value: { type: text }
+          label: { type: text }
+  timeline_items:
+    values:
+      - label: Timeline item
+        icon: directions_run
+        picker_preview: { text: [Timeline item], icon: [directions_run] }
+        preview:
+          text: [{ key: title }, Timeline item]
+          icon: [directions_run]
+        value: { title: null, copy: null }
+        _inputs:
+          title: { type: text }
+          copy: { type: textarea }
+  source_links:
+    values:
+      - label: Source link
+        icon: link
+        picker_preview: { text: [Source link], icon: [link] }
+        preview:
+          text: [{ key: label }, Source link]
+          icon: [link]
+        value: { label: null, href: null }
+        _inputs:
+          label: { type: text }
+          href: { type: text }
+  expectation_items:
+    values:
+      - label: Booking expectation
+        icon: check_circle
+        picker_preview: { text: [Booking expectation], icon: [check_circle] }
+        preview:
+          text: [{ key: title }, Booking expectation]
+          icon: [check_circle]
+        value: { icon: calendar, title: null, copy: null }
+        _inputs:
+          icon:
+            type: select
+            options: { values: [calendar, credit_card, lock] }
+          title: { type: text }
+          copy: { type: textarea }

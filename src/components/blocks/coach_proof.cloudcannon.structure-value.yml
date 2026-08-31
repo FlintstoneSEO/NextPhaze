@@ -1,0 +1,21 @@
+label: Coach proof
+icon: check_circle
+picker_preview: { text: [Coach proof], icon: [check_circle] }
+preview: { text: [{ key: title }, Coach proof], icon: [check_circle] }
+value:
+  _type: coach_proof
+  title:
+  copy:
+  link_label:
+  link_href: /coach-carrington/
+  credentials:
+    - value: "2026"
+      label: Add a verified credential
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+  link_label: { type: text }
+  link_href: { type: text }
+  credentials:
+    type: array
+    options: { structures: _structures.credential_items }

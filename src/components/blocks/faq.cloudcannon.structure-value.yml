@@ -1,0 +1,15 @@
+label: Frequently asked questions
+icon: help
+picker_preview: { text: [Frequently asked questions], icon: [help] }
+preview: { text: [{ key: title }, Frequently asked questions], icon: [help] }
+value:
+  _type: faq
+  title:
+  items:
+    - question: Add a question
+      answer: Add an answer.
+_inputs:
+  title: { type: text }
+  items:
+    type: array
+    options: { structures: _structures.faq_items }

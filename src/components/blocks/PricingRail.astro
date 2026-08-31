@@ -1,0 +1,9 @@
+---
+import { site } from '@/data/site';
+import PricingOptions from '@/components/shared/PricingOptions.astro';
+const { eyebrow, title } = Astro.props;
+---
+<section class="pricing-rail" id="pricing" aria-labelledby="pricing-title"><div class="shell pricing-grid">
+  <div class="pricing-intro"><p class="eyebrow" data-editable="text" data-prop="eyebrow">{eyebrow}</p><h2 id="pricing-title" data-editable="text" data-prop="title">{title}</h2></div>
+  <editable-component data-component="pricing_options" data-prop="@data[site]"><PricingOptions {...site} /></editable-component>
+</div></section>

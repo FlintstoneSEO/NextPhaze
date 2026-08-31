@@ -1,0 +1,10 @@
+---
+import { site } from '@/data/site';
+import BookingOptionCards from '@/components/shared/BookingOptionCards.astro';
+const { title } = Astro.props;
+const squareReady = site.squareBookingUrl.startsWith('https://');
+---
+<section class="content-section booking-options" aria-labelledby="booking-options-title"><div class="shell">
+  <h2 id="booking-options-title" data-editable="text" data-prop="title">{title}</h2><editable-component data-component="booking_option_cards" data-prop="@data[site]"><BookingOptionCards {...site} /></editable-component>
+  {!squareReady && <p class="pending-note" id="square-pending-note" data-editable="text" data-prop="@data[site].booking_pending_note">{site.booking_pending_note}</p>}
+</div></section>

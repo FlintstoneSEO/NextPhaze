@@ -1,0 +1,8 @@
+---
+import { ArrowRight, Trophy } from '@lucide/astro';
+const { title, copy, link_label, link_href, credentials } = Astro.props;
+---
+<section class="coach-proof" aria-labelledby="coach-title"><div class="shell coach-proof-grid">
+  <div class="coach-proof-copy"><Trophy size={34} stroke-width={1.5} aria-hidden="true" /><h2 id="coach-title" data-editable="text" data-prop="title">{title}</h2><p data-editable="text" data-prop="copy">{copy}</p><a class="text-link" href={link_href}><editable-text data-prop="link_label">{link_label}</editable-text> <ArrowRight size={18} stroke-width={1.8} aria-hidden="true" /></a></div>
+  <div class="credential-grid" data-editable="array" data-prop="credentials">{credentials.map((item: any) => <div data-editable="array-item"><strong data-editable="text" data-prop="value">{item.value}</strong><span data-editable="text" data-prop="label">{item.label}</span></div>)}</div>
+</div></section>

@@ -1,0 +1,30 @@
+{
+  "name": "NextPhaze Athletic Training",
+  "short_name": "NextPhaze",
+  "market": "Nashville, Tennessee",
+  "navigation": [
+    { "label": "Training", "href": "/training/" },
+    { "label": "Pricing", "href": "/#pricing" },
+    { "label": "Coach Carrington", "href": "/coach-carrington/" },
+    { "label": "Service Area", "href": "/#service-area" }
+  ],
+  "header_cta": { "label": "Book Training", "href": "/book-training/" },
+  "booking_ready_label": "Continue to Square",
+  "booking_pending_label": "Square Link Pending",
+  "booking_pending_note": "Online scheduling will activate when the Square booking link is connected.",
+  "footer_copy": "Performance training built for the next phase in Nashville, Tennessee.",
+  "footer_navigation": [
+    { "label": "Training", "href": "/training/" },
+    { "label": "Coach Carrington", "href": "/coach-carrington/" },
+    { "label": "Book Training", "href": "/book-training/" },
+    { "label": "Privacy", "href": "/privacy/" }
+  ],
+  "training_options": [
+    { "slug": "one-on-one", "name": "1-on-1 Training", "short_name": "1-on-1", "price": "$60", "price_suffix": "per session", "href": "/training/one-on-one/", "summary": "Focused coaching with direct feedback and a session built around the work in front of you.", "link_prefix": "View", "link_suffix": "Training" },
+    { "slug": "group", "name": "Group Training", "short_name": "Group", "price": "$30", "price_suffix": "per session", "href": "/training/group/", "summary": "Train in a competitive group setting while building movement, skill, and disciplined habits.", "link_prefix": "View", "link_suffix": "Training" }
+  ],
+  "focus_areas": [
+    { "slug": "speed-agility", "name": "Speed and Agility", "href": "/training/speed-agility/", "summary": "Acceleration, footwork, body control, and change of direction for movement that carries into sport." },
+    { "slug": "wide-receiver", "name": "Wide Receiver Skills", "href": "/training/wide-receiver/", "summary": "Stance, releases, route detail, catching, and position movement taught by an experienced receiver." }
+  ]
+}

@@ -1,6 +1,9 @@
 ---
+_schema: legal
+eyebrow: Privacy
 title: Privacy Policy
 description: Privacy information for the NextPhaze Athletic Training website.
+effective_label: Effective
 effective_date: August 30, 2026
 ---
 

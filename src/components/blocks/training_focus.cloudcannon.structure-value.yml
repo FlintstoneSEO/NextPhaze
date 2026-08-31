@@ -1,0 +1,21 @@
+label: Training focus
+icon: directions_run
+picker_preview: { text: [Training focus], icon: [directions_run] }
+preview: { text: [{ key: title }, Training focus], icon: [directions_run], image: [{ key: image }] }
+value:
+  _type: training_focus
+  title:
+  copy:
+  image:
+  image_alt:
+  featured_title:
+  featured_copy:
+  featured_href: /training/one-on-one/
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+  image: { type: image }
+  image_alt: { type: text }
+  featured_title: { type: text }
+  featured_copy: { type: textarea }
+  featured_href: { type: text }

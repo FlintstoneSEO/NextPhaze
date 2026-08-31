@@ -1,0 +1,6 @@
+---
+const { title, items } = Astro.props;
+---
+<section class="faq-section" aria-labelledby="faq-title"><div class="shell faq-grid">
+  <h2 id="faq-title" data-editable="text" data-prop="title">{title}</h2><div class="faq-list" data-editable="array" data-prop="items">{items.map((item: any) => <details data-editable="array-item"><summary data-editable="text" data-prop="question">{item.question}</summary><p data-editable="text" data-prop="answer">{item.answer}</p></details>)}</div>
+</div></section>

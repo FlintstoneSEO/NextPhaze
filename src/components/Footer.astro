@@ -1,18 +1,16 @@
 ---
 import { ArrowUpRight } from '@lucide/astro';
+const { footer_copy, footer_navigation } = Astro.props;
 ---
 
 <footer class="site-footer">
   <div class="shell footer-grid">
     <div>
       <img class="footer-logo" src="/images/nextphaze-logo-transparent.png" width="512" height="512" alt="" aria-hidden="true" />
-      <p>Performance training built for the next phase in Nashville, Tennessee.</p>
+      <p data-editable="text" data-prop="footer_copy">{footer_copy}</p>
     </div>
-    <nav aria-label="Footer navigation">
-      <a href="/training/">Training</a>
-      <a href="/coach-carrington/">Coach Carrington</a>
-      <a href="/book-training/">Book Training</a>
-      <a href="/privacy/">Privacy</a>
+    <nav aria-label="Footer navigation" data-editable="array" data-prop="footer_navigation">
+      {footer_navigation.map((item: any) => <a href={item.href} data-editable="array-item"><editable-text data-prop="label">{item.label}</editable-text></a>)}
     </nav>
     <div class="footer-legal">
       <p>© {new Date().getFullYear()} NextPhaze Athletic Training</p>

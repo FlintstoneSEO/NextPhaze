@@ -1,0 +1,18 @@
+label: Training process
+icon: check_circle
+picker_preview: { text: [Training process], icon: [check_circle] }
+preview: { text: [{ key: title }, Training process], icon: [check_circle] }
+value:
+  _type: process
+  title:
+  copy:
+  items:
+    - icon: target
+      title: Process step
+      copy: Describe this step.
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+  items:
+    type: array
+    options: { structures: _structures.process_items }

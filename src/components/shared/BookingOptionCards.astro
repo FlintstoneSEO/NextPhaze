@@ -1,0 +1,9 @@
+---
+import { ArrowUpRight } from '@lucide/astro';
+import { site as runtimeSite } from '@/data/site';
+const { training_options, booking_ready_label, booking_pending_label } = Astro.props;
+const squareReady = runtimeSite.squareBookingUrl.startsWith('https://');
+---
+<div class="booking-option-grid" data-editable="array" data-prop="training_options">
+  {training_options.map((option: any) => <article data-editable="array-item"><div class="booking-option-top"><h3 data-editable="text" data-prop="name">{option.name}</h3><strong data-editable="text" data-prop="price">{option.price}</strong></div><p data-editable="text" data-prop="summary">{option.summary}</p>{squareReady ? <a class="button" href={runtimeSite.squareBookingUrl} target="_blank" rel="noopener noreferrer">{booking_ready_label} <ArrowUpRight size={18} stroke-width={1.8} aria-hidden="true" /></a> : <button class="button" type="button" disabled aria-describedby="square-pending-note">{booking_pending_label}</button>}</article>)}
+</div>

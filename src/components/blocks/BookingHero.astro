@@ -1,0 +1,10 @@
+---
+import { CalendarDays } from '@lucide/astro';
+import { site } from '@/data/site';
+const { eyebrow, title, copy, ready_title, ready_copy, pending_title, pending_copy } = Astro.props;
+const squareReady = site.squareBookingUrl.startsWith('https://');
+---
+<section class="page-hero booking-hero"><div class="shell booking-hero-grid">
+  <div class="page-hero-copy"><p class="eyebrow" data-editable="text" data-prop="eyebrow">{eyebrow}</p><h1 data-editable="text" data-prop="title">{title}</h1><p class="lede" data-editable="text" data-prop="copy">{copy}</p></div>
+  <div class="square-status" id="square-booking" data-ready={String(squareReady)}><CalendarDays size={28} stroke-width={1.6} aria-hidden="true" /><div>{squareReady ? <><strong data-editable="text" data-prop="ready_title">{ready_title}</strong><p data-editable="text" data-prop="ready_copy">{ready_copy}</p></> : <><strong data-editable="text" data-prop="pending_title">{pending_title}</strong><p data-editable="text" data-prop="pending_copy">{pending_copy}</p></>}</div></div>
+</div></section>

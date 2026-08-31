@@ -1,0 +1,18 @@
+label: Performance callout
+icon: check_circle
+picker_preview: { text: [Performance callout], icon: [check_circle] }
+preview: { text: [{ key: title }, Performance callout], icon: [check_circle] }
+value:
+  _type: performance_callout
+  eyebrow:
+  title:
+  date:
+  link_label:
+  link_href:
+_inputs:
+  eyebrow: { type: text }
+  title: { type: text }
+  date: { type: text }
+  link_label: { type: text }
+  link_href: { type: text }
+

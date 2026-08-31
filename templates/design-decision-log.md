@@ -27,3 +27,7 @@ Decision pending: CTA destinations can route to `/book-training/`, but the final
 ## 2026-08-30: Homepage hero media
 
 Decision: replace the synthetic homepage hero with the client-supplied `Carrington Action Shot.png`, explicitly selected and approved by the user. Deliver it as an optimized WebP with a full-bleed crop, retaining the Training Lab composition and responsive scrim for text contrast.
+
+## 2026-08-30: CloudCannon migration architecture
+
+Decision: complete the partial CloudCannon integration with a structured `pages` collection and registered Astro page blocks for the four unique marketing pages. Retain fixed-schema collections for repeating training detail pages and Markdown legal content. Move shared editor-owned values into YAML data while preserving deployment-owned Square and production-domain environment variables. The approved routes, visual direction, verified facts, SEO behavior, and Flintstone SEO attribution remain unchanged.

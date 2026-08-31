@@ -1,0 +1,10 @@
+label: Development focuses
+icon: directions_run
+picker_preview: { text: [Development focuses], icon: [directions_run] }
+preview: { text: [{ key: title }, Development focuses], icon: [directions_run], image: [{ key: image }] }
+value: { _type: focus_index, title: null, image: null, image_alt: null }
+_inputs:
+  title: { type: text }
+  image: { type: image }
+  image_alt: { type: text }
+

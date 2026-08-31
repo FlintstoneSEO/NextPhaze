@@ -1,0 +1,8 @@
+---
+import { CalendarDays, CreditCard, LockKeyhole } from '@lucide/astro';
+const { title, items } = Astro.props;
+const icons = { calendar: CalendarDays, credit_card: CreditCard, lock: LockKeyhole };
+---
+<section class="booking-expectations" aria-labelledby="expect-title"><div class="shell expectation-grid">
+  <h2 id="expect-title" data-editable="text" data-prop="title">{title}</h2><div data-editable="array" data-prop="items">{items.map((item: any) => { const Icon = icons[item.icon as keyof typeof icons] ?? CalendarDays; return <article data-editable="array-item"><Icon size={24} stroke-width={1.7} aria-hidden="true" /><h3 data-editable="text" data-prop="title">{item.title}</h3><p data-editable="text" data-prop="copy">{item.copy}</p></article>; })}</div>
+</div></section>

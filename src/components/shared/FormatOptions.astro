@@ -1,0 +1,8 @@
+---
+import { MoveRight } from '@lucide/astro';
+const { training_options } = Astro.props;
+---
+<div class="format-grid" data-editable="array" data-prop="training_options">
+  {training_options.map((option: any) => <article data-editable="array-item"><div class="format-price"><span data-editable="text" data-prop="price">{option.price}</span><small data-editable="text" data-prop="price_suffix">{option.price_suffix}</small></div><h3 data-editable="text" data-prop="name">{option.name}</h3><p data-editable="text" data-prop="summary">{option.summary}</p><a class="text-link" href={option.href}><editable-text data-prop="link_prefix">{option.link_prefix}</editable-text> <editable-text data-prop="short_name">{option.short_name}</editable-text> <editable-text data-prop="link_suffix">{option.link_suffix}</editable-text> <MoveRight size={18} stroke-width={1.8} aria-hidden="true" /></a></article>)}
+</div>
+

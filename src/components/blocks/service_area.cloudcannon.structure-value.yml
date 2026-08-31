@@ -1,0 +1,10 @@
+label: Service area
+icon: directions_run
+picker_preview: { text: [Service area], icon: [directions_run] }
+preview: { text: [{ key: title }, Service area], icon: [directions_run] }
+value: { _type: service_area, title: null, copy: null, note: null }
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+  note: { type: textarea }
+

@@ -1,0 +1,9 @@
+---
+import { site } from '@/data/site';
+import FormatOptions from '@/components/shared/FormatOptions.astro';
+const { title, copy } = Astro.props;
+---
+<section class="content-section format-section" aria-labelledby="format-title"><div class="shell">
+  <div class="section-heading"><h2 id="format-title" data-editable="text" data-prop="title">{title}</h2><p data-editable="text" data-prop="copy">{copy}</p></div>
+  <editable-component data-component="format_options" data-prop="@data[site]"><FormatOptions {...site} /></editable-component>
+</div></section>

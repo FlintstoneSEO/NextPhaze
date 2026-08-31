@@ -1,50 +1,7 @@
 ---
-import { ArrowRight, MoveRight } from '@lucide/astro';
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import BookingCTA from '@/components/BookingCTA.astro';
-import { focusAreas, trainingOptions } from '@/data/site';
+import { getEntry } from 'astro:content';
+import PageBuilderPage from '@/components/PageBuilderPage.astro';
+const page = await getEntry('pages', 'training');
+if (!page) throw new Error('Missing training overview content.');
 ---
-
-<BaseLayout title="Sports Performance Training Nashville | NextPhaze" description="Explore NextPhaze athletic training in Nashville, including speed, agility, football skills, group sessions and focused 1-on-1 coaching.">
-  <main>
-    <section class="page-hero training-index-hero">
-      <div class="shell page-hero-grid">
-        <div class="page-hero-copy">
-          <p class="eyebrow">NextPhaze Training</p>
-          <h1>Training With a Clear Purpose</h1>
-          <p class="lede">Choose the format, identify the focus, and put disciplined work behind your next phase.</p>
-          <a class="button" href="/book-training/">Book Training <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" /></a>
-        </div>
-        <div class="route-diagram" aria-label="Training route diagram">
-          <div>Movement</div><span aria-hidden="true"></span><div>Repetition</div><span aria-hidden="true"></span><div>Application</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section format-section" aria-labelledby="format-title">
-      <div class="shell">
-        <div class="section-heading"><h2 id="format-title">Start with the format.</h2><p>Both options keep pricing visible and the booking decision simple.</p></div>
-        <div class="format-grid">
-          {trainingOptions.map((option) => (
-            <article>
-              <div class="format-price"><span>{option.price}</span><small>per session</small></div>
-              <h3>{option.name}</h3><p>{option.summary}</p>
-              <a class="text-link" href={option.href}>View {option.shortName} Training <MoveRight size={18} stroke-width={1.8} aria-hidden="true" /></a>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="content-section focus-index-section" aria-labelledby="development-title">
-      <div class="shell focus-index-grid">
-        <figure><img src="/images/training-lane.webp" width="1536" height="1024" alt="AI-generated agility ladder and training cones arranged on turf" loading="lazy" /></figure>
-        <div>
-          <h2 id="development-title">Then choose the development focus.</h2>
-          {focusAreas.map((area) => <a class="focus-index-link" href={area.href}><div><h3>{area.name}</h3><p>{area.summary}</p></div><ArrowRight size={20} stroke-width={1.8} aria-hidden="true" /></a>)}
-        </div>
-      </div>
-    </section>
-    <BookingCTA title="Choose the work. Book the session." />
-  </main>
-</BaseLayout>
+<PageBuilderPage page={page} />

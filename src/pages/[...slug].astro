@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageBuilderPage from '@/components/PageBuilderPage.astro';
+
+export async function getStaticPaths() {
+  const dedicated = new Set(['index', 'training', 'coach-carrington', 'book-training', 'privacy']);
+  const pages = await getCollection('pages');
+  return pages.filter((page) => !dedicated.has(page.id)).map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+const { page } = Astro.props;
+const data = page.data;
+const rendered = data._schema === 'legal' ? await render(page) : undefined;
+const Content = rendered?.Content;
+---
+{data._schema === 'page_builder' ? <PageBuilderPage page={page} /> : (
+  <BaseLayout title={`${data.title} | NextPhaze`} description={data.description}>
+    <main class="legal-page"><div class="shell legal-shell"><p class="eyebrow" data-editable="text" data-prop="eyebrow">{data.eyebrow}</p><h1 data-editable="text" data-prop="title">{data.title}</h1><p class="lede"><editable-text data-prop="effective_label">{data.effective_label}</editable-text> <editable-text data-prop="effective_date">{data.effective_date}</editable-text></p><article data-editable="text" data-type="block" data-prop="@content">{Content && <Content />}</article></div></main>
+  </BaseLayout>
+)}

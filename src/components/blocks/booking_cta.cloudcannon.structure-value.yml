@@ -1,0 +1,16 @@
+label: Booking call to action
+icon: ads_click
+picker_preview: { text: [Booking call to action], icon: [ads_click] }
+preview: { text: [{ key: title }, Booking call to action], icon: [ads_click] }
+value:
+  _type: booking_cta
+  title: Ready for your next phase?
+  copy: Choose a training option and continue to booking.
+  label: Book Training
+  href: /book-training/
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+  label: { type: text }
+  href: { type: text }
+

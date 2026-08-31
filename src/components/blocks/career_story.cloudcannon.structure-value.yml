@@ -1,0 +1,17 @@
+label: Career story
+icon: directions_run
+picker_preview: { text: [Career story], icon: [directions_run] }
+preview: { text: [{ key: title }, Career story], icon: [directions_run] }
+value:
+  _type: career_story
+  title:
+  copy:
+  items:
+    - title: Timeline item
+      copy: Add verified details.
+_inputs:
+  title: { type: text }
+  copy: { type: textarea }
+  items:
+    type: array
+    options: { structures: _structures.timeline_items }

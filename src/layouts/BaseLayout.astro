@@ -1,6 +1,7 @@
 ---
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import { site } from '@/data/site';
 import '@/styles/global.css';
 
 interface Props {
@@ -43,9 +44,13 @@ const schema = {
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <Header />
+    <editable-component data-component="site_header" data-prop="@data[site]">
+      <Header {...site} />
+    </editable-component>
     <div id="main-content"><slot /></div>
-    <Footer />
+    <editable-component data-component="site_footer" data-prop="@data[site]">
+      <Footer {...site} />
+    </editable-component>
     <script>
       if (window.inEditorMode) {
         import('../cloudcannon/registerComponents').catch((error) => {

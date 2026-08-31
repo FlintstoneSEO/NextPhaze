@@ -1,0 +1,8 @@
+---
+import { ArrowRight } from '@lucide/astro';
+const { focus_areas } = Astro.props;
+---
+<div class="contents" data-editable="array" data-prop="focus_areas">
+  {focus_areas.map((area: any) => <a class="focus-index-link" href={area.href} data-editable="array-item"><div><h3 data-editable="text" data-prop="name">{area.name}</h3><p data-editable="text" data-prop="summary">{area.summary}</p></div><ArrowRight size={20} stroke-width={1.8} aria-hidden="true" /></a>)}
+</div>
+

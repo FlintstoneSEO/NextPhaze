@@ -1,0 +1,26 @@
+label: Home hero
+icon: dashboard
+picker_preview: { text: [Home hero], icon: [dashboard] }
+preview: { text: [{ key: title }, Home hero], icon: [dashboard], image: [{ key: image }] }
+value:
+  _type: home_hero
+  eyebrow:
+  title:
+  copy:
+  image:
+  image_alt:
+  primary_label: Book Training
+  primary_href: /book-training/
+  secondary_label: View Training
+  secondary_href: /training/
+_inputs:
+  eyebrow: { type: text }
+  title: { type: text }
+  copy: { type: textarea }
+  image: { type: image }
+  image_alt: { type: text }
+  primary_label: { type: text }
+  primary_href: { type: text }
+  secondary_label: { type: text }
+  secondary_href: { type: text }
+

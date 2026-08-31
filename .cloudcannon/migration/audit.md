@@ -1,104 +1,100 @@
 # CloudCannon migration audit
 
-## Scope and assumptions
+Date: 2026-08-30
 
-- Site: NextPhaze Athletic Training.
-- Objective: make the existing static Astro site editable in CloudCannon while preserving its routes, design, SEO metadata, and Square-link environment-variable boundary.
-- Recommended editorial scope: editable page content, shared navigation/training options, reusable CTA copy, and service detail pages. The 404 page remains developer-owned.
-- No client facts have been changed or invented during this audit.
+## Platform and build
 
-## Platform and build pipeline
+- SSG: Astro 7.2.9, static output, directory-format routes.
+- Package manager: npm with `package-lock.json`.
+- Build command: `npm run build` (`astro check && astro build`).
+- Framework islands: none. Components are Astro only.
+- CSS: project-owned global CSS; no Tailwind or prose plugin.
+- Markdown: Astro content collections using the `glob()` loader; no MDX, remark, or rehype plugins.
+- CloudCannon runtime: `@cloudcannon/editable-regions` 0.0.19 is installed and its Astro integration is enabled.
+- Environment inputs: `SITE_URL` controls canonical/noindex behavior; `PUBLIC_SQUARE_BOOKING_URL` controls the external booking state.
+- Images: plain `<img>` elements backed by `public/images`; uploads should remain under `public/uploads`.
 
-| Item | Finding |
-| --- | --- |
-| SSG | Astro 7.2.9 (confirmed from `package.json`; CloudCannon CLI detection did not return before the local command timeout) |
-| Output | Static, directory build format |
-| Package manager | npm (`package-lock.json`) |
-| Build | `npm run build` runs `astro check && astro build` |
-| Integrations | None |
-| Framework islands | None; all components are `.astro` |
-| CSS | Project CSS in `src/styles/global.css`; no Tailwind |
-| Markdown / MDX | Not present |
-| Node requirement | No `.nvmrc`, `.node-version`, or `engines` field |
-| Environment | `SITE_URL` controls canonical/noindex behavior; `PUBLIC_SQUARE_BOOKING_URL` controls the external booking state |
+## Content collections
 
-Astro 7 supports the current editable-regions integration. No upgrade decision is required.
+| Collection | Loader and path | Shape | Consumption | Body rendered | Migration action |
+|---|---|---|---|---|---|
+| `pages` | `glob('**/*.md')`, `src/content/pages` | title, description, `content_blocks[]` | Not yet consumed; directory is missing | No | Create entries and page-builder route |
+| `services` | `glob('**/*.md')`, `src/content/services` | fixed service schema | `getEntry()` in two fixed routes | No | Retain fixed schema and wire visual editing |
+| `focus_areas` | `glob('**/*.md')`, `src/content/focus_areas` | fixed service schema | `getEntry()` in two fixed routes | No | Retain fixed schema and wire visual editing |
+| `legal` | `glob('**/*.md')`, `src/content/legal` | title, description, effective date | `getEntry()` and `render()` | Yes | Retain content + data editors |
 
-## Content collections and shared data
-
-There is no `src/content.config.ts` or legacy content configuration, and no Markdown/MDX content. `src/data/site.ts` currently contains site settings plus two repeated content arrays:
-
-| Current source | Shape | Current consumers | Recommended CloudCannon treatment |
-| --- | --- | --- |
-| `site` | singleton settings/navigation | header, booking page | YAML data file; retain environment variable for Square URL in code/config boundary |
-| `trainingOptions` | two like-shaped services | home, training index, booking | fixed-schema `services` collection; canonical source for service cards and service detail pages |
-| `focusAreas` | two like-shaped development areas | home, training index | fixed-schema `focus_areas` collection |
-
-The proposed collections make each routed service page a content entry, not a separate hardcoded page. The Square booking URL should remain an environment variable rather than editable CMS data, because it is an external integration endpoint.
+`src/data/site.ts` contains navigation, booking configuration, training options, and focus-area summaries. It is TypeScript rather than a CloudCannon-editable data file. The editable values will move to a structured YAML file; the environment-provided Square URL remains runtime configuration and will not be exposed as invented content.
 
 ## Pages and routing
 
-All normal routes are static `.astro` pages. `src/pages/sitemap.xml.ts` manually lists the normal routes. It must be refactored to derive routes from the new collections, or the new content entries will be omitted from the sitemap.
+| Route | Source | Data source | CloudCannon treatment |
+|---|---|---|---|
+| `/` | `src/pages/index.astro` | hardcoded + `src/data/site.ts` | page-builder entry `pages/index.md` |
+| `/training/` | `src/pages/training/index.astro` | hardcoded + shared data | page-builder entry `pages/training.md` with explicit permalink |
+| `/training/one-on-one/` | fixed Astro route | `services/one-on-one.md` | fixed-schema collection |
+| `/training/group/` | fixed Astro route | `services/group.md` | fixed-schema collection |
+| `/training/speed-agility/` | fixed Astro route | `focus_areas/speed-agility.md` | fixed-schema collection |
+| `/training/wide-receiver/` | fixed Astro route | `focus_areas/wide-receiver.md` | fixed-schema collection |
+| `/coach-carrington/` | `src/pages/coach-carrington.astro` | hardcoded | page-builder entry |
+| `/book-training/` | `src/pages/book-training.astro` | hardcoded + shared data + environment | page-builder entry; runtime booking state stays computed |
+| `/privacy/` | `src/pages/privacy.astro` | `legal/privacy.md` | fixed-schema legal collection |
+| `/404.html` | `src/pages/404.astro` | hardcoded | keep developer-owned system page |
+| `/sitemap.xml` | `src/pages/sitemap.xml.ts` | generated | keep developer-owned generated route |
 
-| Route | Source | Data source | Recommendation |
-| --- | --- | --- | --- |
-| `/` | `src/pages/index.astro` | hardcoded + shared arrays | `pages` page-builder entry (`index.md`) |
-| `/training/` | `src/pages/training/index.astro` | hardcoded + shared arrays | `pages` page-builder entry (`training/index.md`) |
-| `/training/one-on-one/` | `src/pages/training/one-on-one.astro` | inline props | `services` entry, shared `[slug].astro` template |
-| `/training/group/` | `src/pages/training/group.astro` | inline props | `services` entry, shared `[slug].astro` template |
-| `/training/speed-agility/` | `src/pages/training/speed-agility.astro` | inline props | `focus_areas` entry, shared `[slug].astro` template |
-| `/training/wide-receiver/` | `src/pages/training/wide-receiver.astro` | inline props | `focus_areas` entry, shared `[slug].astro` template |
-| `/coach-carrington/` | `src/pages/coach-carrington.astro` | hardcoded | `pages` page-builder entry |
-| `/book-training/` | `src/pages/book-training.astro` | hardcoded + shared data | `pages` page-builder entry; preserve external booking state logic |
-| `/privacy/` | `src/pages/privacy.astro` | hardcoded prose | fixed-schema `legal` entry with Markdown body |
-| 404 | `src/pages/404.astro` | hardcoded | leave developer-owned |
-| `/sitemap.xml` | `src/pages/sitemap.xml.ts` | manual route array | derive static pages plus collection entries |
+There are no API, pagination, taxonomy, server-rendered, or redirect routes.
 
 ## Static-page census
 
-| Page file | Distinct content sections | Layout repeated on other pages? | Editor will add similar pages? | Recommended pattern |
-| --- | --- | --- | --- | --- |
-| `src/pages/index.astro` | hero, pricing, focus, process, coach, service area, FAQ, CTA | No | Maybe | Page builder |
-| `src/pages/training/index.astro` | hero, formats, focus, CTA | No | Maybe | Page builder |
-| `src/pages/training/{group,one-on-one}.astro` | service hero, topics, CTA | Yes | Yes | Fixed-schema `services` collection |
-| `src/pages/training/{speed-agility,wide-receiver}.astro` | service hero, topics, CTA | Yes | Yes | Fixed-schema `focus_areas` collection |
-| `src/pages/coach-carrington.astro` | hero, stats, story, callout, sources, CTA | No | Maybe | Page builder |
-| `src/pages/book-training.astro` | hero/status, options, expectations | No | Maybe | Page builder |
-| `src/pages/privacy.astro` | heading and long-form policy | Yes (future legal pages) | Maybe | Fixed-schema `legal` collection with Markdown body |
-| `src/pages/404.astro` | error message | N/A | No | Hardcoded |
+| Page file | Distinct content sections | Layout repeated? | Editor may add similar pages? | Recommended pattern |
+|---|---|---|---|---|
+| `src/pages/index.astro` | hero, pricing, focus, process, coach proof, service area, FAQ, CTA | No | Yes | Page builder |
+| `src/pages/training/index.astro` | hero, formats, focus areas, CTA | No | Yes | Page builder |
+| `src/pages/coach-carrington.astro` | hero, stats, timeline, performance, sources, CTA | No | Yes | Page builder |
+| `src/pages/book-training.astro` | hero/status, options, expectations | No | Yes | Page builder with computed booking component |
+| `src/pages/404.astro` | system message | No | No | Hardcoded system page |
+| `src/pages/privacy.astro` | title and long-form body | Yes | Possibly another policy | Existing fixed-schema `legal` collection |
 
-## Layout and component hierarchy
+## Component hierarchy and editing candidates
 
-`BaseLayout.astro` supplies document metadata, structured data, Header, Footer, and page slot. Header reads shared navigation from `src/data/site.ts`. Footer includes the required Flintstone SEO attribution. `BookingCTA.astro` is a reusable editable block candidate. `ServicePage.astro` is a shared presentation template for collections. All image references use `public/images` with plain `<img>` tags, so CloudCannon uploads can remain under the static public image path.
+- `BaseLayout.astro` owns metadata, organization JSON-LD, `Header`, `Footer`, and the page slot.
+- `Header.astro` consumes shared navigation and contains the only interactive client script. Navigation belongs in the data editor.
+- `Footer.astro` is shared UI. Its descriptive copy and navigation belong in shared data; the required Flintstone SEO attribution remains locked in the component.
+- `ServicePage.astro` renders collection-backed service/focus content. Hero fields, image, and topics are visual-editing candidates.
+- `BookingCTA.astro` is shared presentation currently fed by props. Page-builder uses should co-locate CTA fields within the block.
+- New page-block Astro components will represent the existing unique sections without changing the approved visual design.
+- No React/Vue/Svelte/Solid islands, MDX components, `astro-icon`, scroll-reveal behavior, or source-editable wrapper components were found.
+- Inline `<details>` exists only in the hardcoded homepage and will become a structured FAQ block, not a Markdown snippet.
+- `set:html` is limited to generated JSON-LD and is not editor content.
 
-No MDX components, inline HTML content, framework islands, `astro-icon`, presentation wrappers, scroll-reveal scripts, or entrance animations were found.
+## Primitive vs. computed census
 
-## Primitive versus computed census
+| Template | Interpolation | Kind | Action |
+|---|---|---|---|
+| `index.astro` | shared training/focus arrays and numeric index formatting | computed/shared data | Render inside registered section components using co-located block fields |
+| `training/index.astro` | shared training/focus arrays | computed/shared data | Render inside registered section components using co-located block fields |
+| `coach-carrington.astro` | all visible values currently literals | primitive | Move into co-located block fields |
+| `book-training.astro` | Square readiness ternaries and shared options | computed/runtime | Isolate in registered booking components; keep display copy editable |
+| service detail routes | `page.data.*` values | primitive | Keep collection fields and registered service component |
+| `privacy.astro` | title, date prefix, rendered body | primitive plus presentational prefix | Keep collection fields; isolate date presentation from editable value |
 
-Route templates with repeated interpolations depend primarily on shared data or computed state:
+Target for migrated route files: zero computed visible-content interpolation outside registered components.
 
-| Interpolation / behavior | Kind | Migration action |
-| --- | --- | --- |
-| `trainingOptions.map(...)` | shared collection data | render through collection-backed block/component |
-| `focusAreas.map(...)` | shared collection data | render through collection-backed block/component |
-| `squareReady` conditional | computed environment state | retain in a dedicated booking-status component; do not expose as a frontmatter primitive |
-| SEO title / description | primitive page metadata | keep under each page/collection entry metadata |
+## Registered-component co-location census
 
-Target state: page route files render collection entries and registered blocks; stateful booking logic is isolated from editable frontmatter.
+No components are currently registered: `src/cloudcannon/registerComponents.ts` exports nothing. Every page-builder block introduced in Phase 3 will receive a single co-located block object and be registered in Phase 4; no empty prop prefix or fallback wrapper will be used.
 
-## Visual-editing candidates
+## Flags for later phases
 
-- Page-builder blocks: hero, pricing/service list, focus list, process steps, credential/stat list, FAQ, source links, booking expectations, CTA.
-- Shared data panel: navigation labels/links and service/focus entries.
-- Leave structured-data template, global footer attribution, responsive header behavior, and Square environment variable developer-owned.
+- `cloudcannon.config.yml` references the missing `src/content/pages` directory.
+- Existing `_structures.content_blocks` defines only a CTA and does not cover any current page.
+- The `data` collection points at a TypeScript module, which CloudCannon cannot safely treat as normal editor data.
+- Existing editable attributes cover only legal and service fields; shared CTAs and all unique marketing sections remain hardcoded.
+- Booking URL and production domain remain deployment environment values.
+- Existing factual constraints and approved route architecture must be preserved.
 
-## Sectioning assessment
+## Migration sizing
 
-- Total content routes: 9 (threshold >30: not tripped).
-- Hardcoded-to-content conversions: 8 normal pages (threshold >15: not tripped).
-- Distinct proposed collections: 4 (`pages`, `services`, `focus_areas`, `legal`) (threshold >5: not tripped).
-- Result: single-pass migration is appropriate; no sectioning plan required.
-
-## User review required before configuration
-
-Confirm the editorial model: page-builder entries for unique marketing pages, fixed-schema collections for services/focus areas/legal content, and Square URL retained as a deployment environment variable.
+- Total rendered HTML routes: 10 including the 404 page (threshold `>30`: not tripped).
+- Hardcoded Astro-to-content conversions: 4 (threshold `>15`: not tripped).
+- Distinct content collections after migration: 3 (`pages`, `services`, `focus_areas`; threshold `>5`: not tripped). The former `legal` entry is consolidated into `pages`.
+- Thresholds tripped: 0/3. A single-pass migration is appropriate; no `.cloudcannon/migration/plan.md` is required.

@@ -1,0 +1,16 @@
+label: Booking expectations
+icon: check_circle
+picker_preview: { text: [Booking expectations], icon: [check_circle] }
+preview: { text: [{ key: title }, Booking expectations], icon: [check_circle] }
+value:
+  _type: booking_expectations
+  title:
+  items:
+    - icon: calendar
+      title: Booking detail
+      copy: Explain what the booking provider handles.
+_inputs:
+  title: { type: text }
+  items:
+    type: array
+    options: { structures: _structures.expectation_items }

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlockRenderer from '@/components/BlockRenderer.astro';
+const { page } = Astro.props;
+const data = page.data;
+if (data._schema !== 'page_builder') throw new Error(`Expected page_builder content for ${page.id}.`);
+---
+<BaseLayout title={data.title} description={data.description} preloadImage={data.preload_image ?? undefined}>
+  <main>
+    <div class="page-blocks" data-editable="array" data-prop="content_blocks" data-component-key="_type">
+      {data.content_blocks.map((block: any) => (
+        <div class="page-block" data-editable="array-item" data-component={block._type}>
+          <BlockRenderer {...block} />
+        </div>
+      ))}
+    </div>
+  </main>
+</BaseLayout>

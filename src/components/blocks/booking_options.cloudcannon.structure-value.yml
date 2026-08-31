@@ -1,0 +1,9 @@
+label: Booking options
+icon: fitness_center
+picker_preview: { text: [Booking options], icon: [fitness_center] }
+preview: { text: [{ key: title }, Booking options], icon: [fitness_center] }
+value:
+  _type: booking_options
+  title:
+_inputs:
+  title: { type: text }

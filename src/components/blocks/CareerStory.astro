@@ -1,0 +1,8 @@
+---
+import { Trophy } from '@lucide/astro';
+const { title, copy, items } = Astro.props;
+---
+<section class="content-section career-story" aria-labelledby="story-title"><div class="shell career-story-grid">
+  <div><Trophy size={34} stroke-width={1.5} aria-hidden="true" /><h2 id="story-title" data-editable="text" data-prop="title">{title}</h2><p data-editable="text" data-prop="copy">{copy}</p></div>
+  <ol class="career-timeline" data-editable="array" data-prop="items">{items.map((item: any) => <li data-editable="array-item"><strong data-editable="text" data-prop="title">{item.title}</strong><span data-editable="text" data-prop="copy">{item.copy}</span></li>)}</ol>
+</div></section>
