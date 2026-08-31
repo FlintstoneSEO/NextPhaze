@@ -2,13 +2,13 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ServicePage from '@/components/ServicePage.astro';
 import BookingCTA from '@/components/BookingCTA.astro';
+import { getEntry } from 'astro:content';
+
+const page = await getEntry('services', 'group');
+if (!page) throw new Error('Missing group service content.');
+const content = page.data;
 ---
-<BaseLayout title="Group Athletic Training Nashville | $30 Sessions" description="Train with NextPhaze in a group setting for $30 per session. Build speed, movement, football skills and competitive habits in Nashville.">
-  <ServicePage eyebrow="Group Training" title="Group Training That Builds Competitive Habits" intro="Train alongside other athletes in a disciplined group format for $30 per session in Nashville." price="$30" image="/images/training-lane.webp" imageAlt="AI-generated training setup with agility ladder and gold cones on turf" topics={[
-    { title: 'Competitive environment', copy: 'Work in a group setting where pace, repetition, and shared effort support the session.' },
-    { title: 'Movement development', copy: 'Build footwork, body control, acceleration, and change of direction as programmed.' },
-    { title: 'Skill repetition', copy: 'Use repeated movement and football-skill work to reinforce disciplined habits.' },
-    { title: 'Transparent price', copy: 'Group training is confirmed at $30 per session. Group size and schedule are confirmed during booking.' }
-  ]} relatedHref="/training/one-on-one/" relatedLabel="Compare 1-on-1 Training" />
+<BaseLayout title={content.title} description={content.description}>
+  <ServicePage eyebrow={content.eyebrow} title={content.title} intro={content.intro} price={content.price ?? undefined} image={content.image} imageAlt={content.image_alt} topics={content.topics} relatedHref={content.related_href} relatedLabel={content.related_label} editable />
   <BookingCTA title="Bring purpose to the group." copy="Choose group training and connect to Square when booking opens." />
 </BaseLayout>

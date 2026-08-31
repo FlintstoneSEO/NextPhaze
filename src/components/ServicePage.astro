@@ -11,25 +11,26 @@ interface Props {
   topics: Array<{ title: string; copy: string }>;
   relatedHref: string;
   relatedLabel: string;
+  editable?: boolean;
 }
 
-const { eyebrow, title, intro, price, image, imageAlt, topics, relatedHref, relatedLabel } = Astro.props;
+const { eyebrow, title, intro, price, image, imageAlt, topics, relatedHref, relatedLabel, editable = false } = Astro.props;
 ---
 
 <main>
   <section class="page-hero service-hero">
     <div class="shell service-hero-grid">
       <div class="page-hero-copy">
-        <p class="eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
-        <p class="lede">{intro}</p>
+        <p class="eyebrow" data-editable={editable ? 'text' : undefined} data-prop="eyebrow">{eyebrow}</p>
+        <h1 data-editable={editable ? 'text' : undefined} data-prop="title">{title}</h1>
+        <p class="lede" data-editable={editable ? 'text' : undefined} data-prop="intro">{intro}</p>
         <div class="hero-actions">
           <a class="button" href="/book-training/">Book Training <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" /></a>
           <a class="text-link" href="/training/">Explore Training <MoveRight size={18} stroke-width={1.8} aria-hidden="true" /></a>
         </div>
       </div>
       <figure class="service-hero-media">
-        <img src={image} alt={imageAlt} width="1536" height="1024" loading="eager" fetchpriority="high" />
+        <img src={image} alt={imageAlt} width="1536" height="1024" loading="eager" fetchpriority="high" data-editable={editable ? 'image' : undefined} data-prop={editable ? 'image' : undefined} />
         {price && <figcaption><span>{price}</span> per session</figcaption>}
       </figure>
     </div>
@@ -39,11 +40,11 @@ const { eyebrow, title, intro, price, image, imageAlt, topics, relatedHref, rela
     <div class="shell narrow-stack">
       <h2>What the work can include</h2>
       <p>Each session focuses on the training format and development area you select. Exact scheduling, duration, and eligibility will be confirmed through booking.</p>
-      <div class="topic-grid">
+      <div class="topic-grid" data-editable={editable ? 'array' : undefined} data-prop={editable ? 'topics' : undefined}>
         {topics.map((topic) => (
-          <article class="topic-item">
+          <article class="topic-item" data-editable={editable ? 'array-item' : undefined}>
             <Check size={22} stroke-width={1.8} aria-hidden="true" />
-            <div><h3>{topic.title}</h3><p>{topic.copy}</p></div>
+            <div><h3 data-editable={editable ? 'text' : undefined} data-prop="title">{topic.title}</h3><p data-editable={editable ? 'text' : undefined} data-prop="copy">{topic.copy}</p></div>
           </article>
         ))}
       </div>

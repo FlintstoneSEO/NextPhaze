@@ -1,0 +1,142 @@
+paths:
+  static: public
+  uploads: public/uploads
+timezone: America/New_York
+markdown:
+  engine: commonmark
+  options:
+    gfm: true
+collections_config:
+  pages:
+    path: src/content/pages
+    url: "/[slug]/"
+    icon: dashboard
+    _enabled_editors:
+      - visual
+      - data
+    _inputs:
+      title:
+        type: text
+      description:
+        type: textarea
+      content_blocks:
+        type: array
+        options:
+          structures: _structures.content_blocks
+  services:
+    path: src/content/services
+    url: "/training/[slug]/"
+    icon: fitness_center
+    _enabled_editors:
+      - visual
+      - data
+    _inputs:
+      title:
+        type: text
+      description:
+        type: textarea
+      image:
+        type: image
+      topics:
+        type: array
+        options:
+          structures: _structures.topic_items
+  focus_areas:
+    path: src/content/focus_areas
+    url: "/training/[slug]/"
+    icon: directions_run
+    _enabled_editors:
+      - visual
+      - data
+    _inputs:
+      title:
+        type: text
+      description:
+        type: textarea
+      image:
+        type: image
+      topics:
+        type: array
+        options:
+          structures: _structures.topic_items
+  legal:
+    path: src/content/legal
+    url: "/[slug]/"
+    icon: policy
+    _enabled_editors:
+      - content
+      - data
+    _inputs:
+      title:
+        type: text
+      description:
+        type: textarea
+      effective_date:
+        type: datetime
+  data:
+    path: src/data
+    disable_url: true
+    icon: settings
+    _inputs:
+      navigation:
+        type: array
+        options:
+          structures: _structures.navigation_items
+_structures:
+  navigation_items:
+    values:
+      - label: Navigation link
+        icon: link
+        picker_preview:
+          text:
+            - Navigation link
+          icon:
+            - link
+        preview:
+          text:
+            - key: label
+            - Navigation link
+          icon:
+            - link
+        value:
+          label:
+          href:
+  topic_items:
+    values:
+      - label: Training topic
+        icon: check_circle
+        picker_preview:
+          text:
+            - Training topic
+          icon:
+            - check_circle
+        preview:
+          text:
+            - key: title
+            - Training topic
+          icon:
+            - check_circle
+        value:
+          title:
+          copy:
+  content_blocks:
+    values:
+      - label: Call to action
+        icon: ads_click
+        picker_preview:
+          text:
+            - Call to action
+          icon:
+            - ads_click
+        preview:
+          text:
+            - key: title
+            - Call to action
+          icon:
+            - ads_click
+        value:
+          _type: cta
+          title:
+          copy:
+          href: /book-training/
+          label: Book Training

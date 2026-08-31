@@ -46,5 +46,12 @@ const schema = {
     <Header />
     <div id="main-content"><slot /></div>
     <Footer />
+    <script>
+      if (window.inEditorMode) {
+        import('../cloudcannon/registerComponents').catch((error) => {
+          console.warn('Failed to load CloudCannon component registration:', error);
+        });
+      }
+    </script>
   </body>
 </html>
