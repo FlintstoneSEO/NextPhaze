@@ -5,13 +5,14 @@ import { glob } from 'astro/loaders';
 const textPair = z.object({ title: z.string(), copy: z.string() });
 const labelLink = z.object({ label: z.string(), href: z.string() });
 const valueLabel = z.object({ value: z.string(), label: z.string() });
+const credentialPanel = valueLabel.extend({ detail: z.string().nullish(), image: z.string(), image_alt: z.string() });
 
 const contentBlock = z.discriminatedUnion('_type', [
   z.object({ _type: z.literal('home_hero'), eyebrow: z.string(), title: z.string(), copy: z.string(), image: z.string(), image_alt: z.string(), primary_label: z.string(), primary_href: z.string(), secondary_label: z.string(), secondary_href: z.string() }),
   z.object({ _type: z.literal('pricing_rail'), eyebrow: z.string(), title: z.string() }),
   z.object({ _type: z.literal('training_focus'), title: z.string(), copy: z.string(), image: z.string(), image_alt: z.string(), featured_title: z.string(), featured_copy: z.string(), featured_href: z.string() }),
   z.object({ _type: z.literal('process'), title: z.string(), copy: z.string(), items: z.array(textPair.extend({ icon: z.enum(['target', 'timer', 'route']) })) }),
-  z.object({ _type: z.literal('coach_proof'), title: z.string(), copy: z.string(), link_label: z.string(), link_href: z.string(), credentials: z.array(valueLabel) }),
+  z.object({ _type: z.literal('coach_proof'), title: z.string(), copy: z.string(), link_label: z.string(), link_href: z.string(), credentials: z.array(credentialPanel) }),
   z.object({ _type: z.literal('service_area'), title: z.string(), copy: z.string(), note: z.string() }),
   z.object({ _type: z.literal('faq'), title: z.string(), items: z.array(z.object({ question: z.string(), answer: z.string() })) }),
   z.object({ _type: z.literal('booking_cta'), title: z.string(), copy: z.string(), label: z.string(), href: z.string() }),

@@ -46,10 +46,13 @@ content_blocks:
     credentials:
       - value: "#15"
         label: Western Michigan wide receiver
-      - value: "2016"
-        label: MAC Champion and Cotton Bowl team member
+        detail: 2016 MAC Champion and Cotton Bowl team member
+        image: /images/carrington-wmu-proof.webp
+        image_alt: Carrington Thompson making a catch for Western Michigan
       - value: "2018"
         label: MPIF Champion and Offensive Rookie of the Year
+        image: /images/carrington-mpif-proof.webp
+        image_alt: Carrington Thompson making a catch for the West Michigan Ironmen
   - _type: service_area
     title: Training in the Nashville area.
     copy: NextPhaze serves athletes in Nashville, Tennessee. Exact training location and session availability are confirmed during booking.
@@ -71,4 +74,3 @@ content_blocks:
     label: Book Training
     href: /book-training/
 ---
-

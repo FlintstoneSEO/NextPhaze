@@ -596,34 +596,78 @@ h3 {
 
 .credential-grid {
   display: grid;
-  gap: 1px;
-  background: var(--line);
-  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  grid-template-columns: 1.08fr 0.92fr;
 }
 
-.credential-grid > div {
-  min-height: 210px;
-  padding: clamp(1.6rem, 3vw, 2.6rem);
+.credential-panel {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(390px, 39vw, 530px);
+  overflow: hidden;
   background: var(--surface);
 }
 
-.credential-grid > div:first-child {
-  grid-row: span 2;
+.credential-panel::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 28%, rgb(6 7 8 / 0.2) 48%, rgb(6 7 8 / 0.94) 100%);
+  content: "";
+}
+
+.credential-panel img {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.credential-panel:first-child img {
+  object-position: 50% 40%;
+}
+
+.credential-panel:last-child img {
+  object-position: 62% 50%;
+}
+
+.credential-panel-copy {
+  position: absolute;
+  z-index: 2;
+  inset: auto clamp(1.35rem, 2.5vw, 2rem) clamp(1.4rem, 2.8vw, 2.2rem);
+  color: #fff;
 }
 
 .credential-grid strong {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   color: var(--gold);
   font-family: var(--display);
-  font-size: clamp(4rem, 8vw, 8rem);
+  font-size: clamp(3.7rem, 6vw, 6.5rem);
   line-height: 0.8;
 }
 
 .credential-grid span {
   display: block;
-  max-width: 22ch;
+  max-width: 19ch;
+  color: #fff;
   font-weight: 750;
+}
+
+.credential-grid p {
+  max-width: 22ch;
+  margin: 0.65rem 0 0;
+  color: rgb(255 255 255 / 0.78);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .credential-panel:hover img {
+    transform: scale(1.025);
+  }
 }
 
 .service-area {
@@ -1480,8 +1524,12 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .credential-grid > div:first-child {
-    grid-row: auto;
+  .credential-panel {
+    min-height: clamp(340px, 110vw, 460px);
+  }
+
+  .credential-panel:last-child {
+    min-height: clamp(300px, 82vw, 380px);
   }
 
   .cta-band-inner {

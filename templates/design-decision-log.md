@@ -31,3 +31,7 @@ Decision: replace the synthetic homepage hero with the client-supplied `Carringt
 ## 2026-08-30: CloudCannon migration architecture
 
 Decision: complete the partial CloudCannon integration with a structured `pages` collection and registered Astro page blocks for the four unique marketing pages. Retain fixed-schema collections for repeating training detail pages and Markdown legal content. Move shared editor-owned values into YAML data while preserving deployment-owned Square and production-domain environment variables. The approved routes, visual direction, verified facts, SEO behavior, and Flintstone SEO attribution remain unchanged.
+
+## 2026-08-31: Homepage career proof imagery
+
+Decision: combine the Western Michigan #15 and 2016 championship credentials into one image-backed panel using the client-selected `Carrington Action Shot2.PNG`. Pair the 2018 MPIF championship and Offensive Rookie of the Year credential with `Carrington Action 5.png` in a second panel. Use dark lower scrims and responsive crops so the credentials remain readable without separating the photographs from their related career proof.

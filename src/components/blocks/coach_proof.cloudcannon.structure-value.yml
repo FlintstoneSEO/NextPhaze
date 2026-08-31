@@ -11,6 +11,9 @@ value:
   credentials:
     - value: "2026"
       label: Add a verified credential
+      detail:
+      image:
+      image_alt:
 _inputs:
   title: { type: text }
   copy: { type: textarea }

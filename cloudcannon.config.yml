@@ -295,10 +295,13 @@ _structures:
           text: [{ key: value }, Credential]
           subtext: [{ key: label }]
           icon: [check_circle]
-        value: { value: null, label: null }
+        value: { value: null, label: null, detail: null, image: null, image_alt: null }
         _inputs:
           value: { type: text }
           label: { type: text }
+          detail: { type: textarea }
+          image: { type: image }
+          image_alt: { type: text }
   faq_items:
     values:
       - label: Question and answer
