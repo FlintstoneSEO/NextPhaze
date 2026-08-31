@@ -69,6 +69,19 @@ test('training-focus selection expands the matching item and background', async 
   await expect(focus.getByRole('link', { name: 'View Wide Receiver Skills' })).toHaveAttribute('href', '/training/wide-receiver/');
 });
 
+test('training-focus mobile content does not overlap', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/', { waitUntil: 'networkidle' });
+  const activeItem = page.locator('[data-focus-item].is-active');
+  const triggerBox = await activeItem.locator('.focus-trigger').boundingBox();
+  const detailBox = await activeItem.locator('.focus-detail').boundingBox();
+
+  expect(triggerBox).not.toBeNull();
+  expect(detailBox).not.toBeNull();
+  expect(detailBox!.y).toBeGreaterThanOrEqual(triggerBox!.y + triggerBox!.height - 1);
+  await expect(activeItem.locator('.focus-link')).toBeVisible();
+});
+
 for (const width of [320, 375, 390, 768, 1024, 1440]) {
   test(`homepage screenshot and reflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 });

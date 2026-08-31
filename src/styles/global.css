@@ -550,6 +550,8 @@ h3 {
   color: inherit;
   cursor: pointer;
   text-align: left;
+  grid-column: 1;
+  grid-row: 1;
   grid-template-columns: auto minmax(0, 1fr);
 }
 
@@ -566,6 +568,8 @@ h3 {
   height: 2.75rem;
   margin-top: clamp(1.05rem, 2.2vw, 1.75rem);
   color: inherit;
+  grid-column: 2;
+  grid-row: 1;
   text-decoration: none;
 }
 
@@ -575,6 +579,8 @@ h3 {
   max-height: 0;
   margin: 0;
   opacity: 0;
+  grid-column: 1 / -1;
+  grid-row: 2;
   transition: max-height 280ms ease, margin 280ms ease, opacity 180ms ease;
 }
 
@@ -1729,12 +1735,12 @@ h3 {
     padding: 1.5rem;
   }
 
-  .focus-list a {
+  .focus-list > a {
     gap: 0.85rem;
     grid-template-columns: auto 1fr;
   }
 
-  .focus-list a > svg {
+  .focus-list > a > svg {
     display: none;
   }
 
