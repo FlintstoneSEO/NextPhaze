@@ -1,0 +1,59 @@
+{
+  "project": {
+    "name": "NextPhaze Athletic Training",
+    "type": "Local sports-performance marketing website",
+    "status": "Approved for implementation planning",
+    "platform": "Astro",
+    "primaryMarket": "Nashville, Tennessee"
+  },
+  "businessGoal": "Turn Nashville athletes and parents into qualified training bookings.",
+  "primaryConversion": {
+    "label": "Book Training",
+    "destination": "[NEEDS CLIENT INPUT: booking URL or approved lead-capture workflow]"
+  },
+  "audiences": [
+    "Athletes seeking speed, agility, football, or position-specific coaching",
+    "Parents or guardians evaluating training options for an athlete"
+  ],
+  "confirmedOffers": [
+    { "name": "Group Training", "price": 30, "currency": "USD" },
+    { "name": "1-on-1 Training", "price": 60, "currency": "USD" },
+    { "name": "Speed and Agility Training", "price": null },
+    { "name": "Wide Receiver and Football Skill Training", "price": null }
+  ],
+  "positioning": "Training first, Carrington Thompson's verified playing career second as credibility.",
+  "differentiationHypothesis": [
+    "Direct access to the coach whose experience is presented",
+    "Transparent session pricing",
+    "Football expertise paired with broader speed and agility development",
+    "A straightforward booking path"
+  ],
+  "brand": {
+    "existingAssets": ["NextPhaze logo", "six Carrington photographs"],
+    "palette": ["off-black", "metallic gold", "silver", "warm white"],
+    "voice": ["direct", "disciplined", "specific", "encouraging"]
+  },
+  "qualityTargets": {
+    "accessibility": "WCAG 2.2 AA",
+    "responsiveWidths": [320, 375, 390, 768, 1024, 1440],
+    "lcpSeconds": 2.5,
+    "inpMilliseconds": 200,
+    "cls": 0.1
+  },
+  "assumptions": [
+    "The supplied logo is authorized for use.",
+    "Nashville can be named as the market without implying a storefront or fixed facility.",
+    "Audience copy will remain age-neutral until athlete age ranges are confirmed.",
+    "No testimonials, ratings, schedules, results, credentials, or locations will be invented."
+  ],
+  "missingInputs": [
+    { "item": "Booking destination or lead workflow", "owner": "Client", "severity": "blocker for complete conversion path" },
+    { "item": "Business model: storefront, hybrid, or service area", "owner": "Client", "severity": "high" },
+    { "item": "Venue or service areas", "owner": "Client", "severity": "high" },
+    { "item": "Session duration and athlete ages", "owner": "Client", "severity": "high" },
+    { "item": "Availability and cancellation policy", "owner": "Client", "severity": "high" },
+    { "item": "Phone, public email, production domain, social URLs", "owner": "Client", "severity": "medium" },
+    { "item": "Rights confirmation for supplied Carrington photography", "owner": "Client", "severity": "high" },
+    { "item": "GA4 measurement ID", "owner": "Client", "severity": "medium" }
+  ]
+}

@@ -1,0 +1,50 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath?: string;
+  preloadImage?: string;
+}
+
+const { title, description, canonicalPath = Astro.url.pathname, preloadImage } = Astro.props;
+const canonical = Astro.site ? new URL(canonicalPath, Astro.site) : undefined;
+const productionDomainConfigured = Boolean(import.meta.env.SITE_URL);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'NextPhaze Athletic Training',
+  areaServed: { '@type': 'City', name: 'Nashville' },
+  description: 'Athletic training focused on speed, agility, football skills, group sessions, and one-on-one coaching in Nashville, Tennessee.'
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#12110f" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} type="image/webp" fetchpriority="high" />}
+    <meta name="description" content={description} />
+    {!productionDomainConfigured && <meta name="robots" content="noindex, nofollow" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/images/nextphaze-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/png" href="/images/nextphaze-logo.png" />
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <div id="main-content"><slot /></div>
+    <Footer />
+  </body>
+</html>

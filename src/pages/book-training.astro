@@ -1,0 +1,59 @@
+---
+import { ArrowUpRight, CalendarDays, CreditCard, LockKeyhole } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site, trainingOptions } from '@/data/site';
+
+const squareReady = site.squareBookingUrl.startsWith('https://');
+---
+
+<BaseLayout title="Book Athletic Training in Nashville | NextPhaze" description="Book NextPhaze training in Nashville. Choose $30 group training or $60 one-on-one coaching and select an available session.">
+  <main>
+    <section class="page-hero booking-hero">
+      <div class="shell booking-hero-grid">
+        <div class="page-hero-copy">
+          <p class="eyebrow">Book Training</p>
+          <h1>Choose Your Training Format</h1>
+          <p class="lede">Select group or one-on-one training. Scheduling and payment will be completed securely through Square.</p>
+        </div>
+        <div class="square-status" id="square-booking" data-ready={String(squareReady)}>
+          <CalendarDays size={28} stroke-width={1.6} aria-hidden="true" />
+          <div>
+            <strong>{squareReady ? 'Square booking is ready' : 'Square booking setup is in progress'}</strong>
+            <p>{squareReady ? 'Continue to see live availability and complete payment.' : 'The Square URL has not been added yet. Pricing and training choices are ready below.'}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section booking-options" aria-labelledby="booking-options-title">
+      <div class="shell">
+        <h2 id="booking-options-title">Pick the right session.</h2>
+        <div class="booking-option-grid">
+          {trainingOptions.map((option) => (
+            <article>
+              <div class="booking-option-top"><h3>{option.name}</h3><strong>{option.price}</strong></div>
+              <p>{option.summary}</p>
+              {squareReady ? (
+                <a class="button" href={site.squareBookingUrl} target="_blank" rel="noopener noreferrer">Continue to Square <ArrowUpRight size={18} stroke-width={1.8} aria-hidden="true" /></a>
+              ) : (
+                <button class="button" type="button" disabled aria-describedby="square-pending-note">Square Link Pending</button>
+              )}
+            </article>
+          ))}
+        </div>
+        {!squareReady && <p class="pending-note" id="square-pending-note">Online scheduling will activate when the Square booking link is connected.</p>}
+      </div>
+    </section>
+
+    <section class="booking-expectations" aria-labelledby="expect-title">
+      <div class="shell expectation-grid">
+        <h2 id="expect-title">What Square will handle.</h2>
+        <div>
+          <article><CalendarDays size={24} stroke-width={1.7} aria-hidden="true" /><h3>Live availability</h3><p>Available dates and times will come directly from the connected Square schedule.</p></article>
+          <article><CreditCard size={24} stroke-width={1.7} aria-hidden="true" /><h3>Secure payment</h3><p>Payment details will be entered on Square, not stored on this website.</p></article>
+          <article><LockKeyhole size={24} stroke-width={1.7} aria-hidden="true" /><h3>Booking confirmation</h3><p>A booking is complete only after Square displays or sends a confirmation.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

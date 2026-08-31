@@ -1,0 +1,14 @@
+---
+import { ArrowLeft } from '@lucide/astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+<BaseLayout title="Page Not Found | NextPhaze" description="The requested NextPhaze page could not be found.">
+  <main class="error-page">
+    <div class="shell">
+      <p class="eyebrow">404</p>
+      <h1>This route ends here.</h1>
+      <p>Return to the training overview and choose your next move.</p>
+      <a class="button" href="/training/"><ArrowLeft size={18} stroke-width={1.8} aria-hidden="true" /> View Training</a>
+    </div>
+  </main>
+</BaseLayout>

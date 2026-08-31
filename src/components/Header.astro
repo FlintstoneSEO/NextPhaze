@@ -1,0 +1,35 @@
+---
+import { Menu, X } from '@lucide/astro';
+import { site } from '@/data/site';
+---
+
+<header class="site-header" data-header>
+  <div class="shell nav-shell">
+    <a class="brand" href="/" aria-label="NextPhaze home">
+      <img src="/images/nextphaze-logo-transparent.png" width="512" height="512" alt="NextPhaze Athletic Training" fetchpriority="high" decoding="sync" />
+    </a>
+
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-button>
+      <span class="sr-only">Open navigation</span>
+      <Menu class="menu-open-icon" size={24} stroke-width={1.8} aria-hidden="true" />
+      <X class="menu-close-icon" size={24} stroke-width={1.8} aria-hidden="true" />
+    </button>
+
+    <nav id="site-menu" class="site-nav" aria-label="Primary navigation" data-menu>
+      {site.navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a class="button button-small" href="/book-training/">Book Training</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const button = document.querySelector<HTMLElement>('[data-menu-button]');
+  const header = document.querySelector<HTMLElement>('[data-header]');
+
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!open));
+    header?.toggleAttribute('data-menu-open', !open);
+    button.querySelector('.sr-only')!.textContent = open ? 'Open navigation' : 'Close navigation';
+  });
+</script>

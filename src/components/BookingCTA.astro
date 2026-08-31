@@ -1,0 +1,25 @@
+---
+import { ArrowRight } from '@lucide/astro';
+
+interface Props {
+  title?: string;
+  copy?: string;
+}
+
+const {
+  title = 'Ready for your next phase?',
+  copy = 'Choose group or one-on-one training, review the price, and prepare to book through Square.'
+} = Astro.props;
+---
+
+<section class="cta-band" aria-labelledby="booking-cta-title">
+  <div class="shell cta-band-inner">
+    <div>
+      <h2 id="booking-cta-title">{title}</h2>
+      <p>{copy}</p>
+    </div>
+    <a class="button" href="/book-training/">
+      Book Training <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" />
+    </a>
+  </div>
+</section>
