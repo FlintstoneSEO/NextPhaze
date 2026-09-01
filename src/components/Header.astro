@@ -1,6 +1,8 @@
 ---
 import { Menu, X } from '@lucide/astro';
+import { bookingHref, isExternalBookingHref } from '@/utils/booking';
 const { navigation, header_cta } = Astro.props;
+const headerCtaHref = bookingHref(header_cta.href);
 ---
 
 <header class="site-header" data-header>
@@ -19,7 +21,7 @@ const { navigation, header_cta } = Astro.props;
       <div class="contents" data-editable="array" data-prop="navigation">
         {navigation.map((item: any) => <a href={item.href} data-editable="array-item"><editable-text data-prop="label">{item.label}</editable-text></a>)}
       </div>
-      <a class="button button-small" href={header_cta.href}><editable-text data-prop="header_cta.label">{header_cta.label}</editable-text></a>
+      <a class="button button-small" href={headerCtaHref} target={isExternalBookingHref(header_cta.href) ? '_blank' : undefined} rel={isExternalBookingHref(header_cta.href) ? 'noopener noreferrer' : undefined}><editable-text data-prop="header_cta.label">{header_cta.label}</editable-text></a>
     </nav>
   </div>
 </header>

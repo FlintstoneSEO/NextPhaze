@@ -26,7 +26,7 @@ const contentBlock = z.discriminatedUnion('_type', [
   z.object({ _type: z.literal('source_section'), title: z.string(), copy: z.string(), links: z.array(labelLink) }),
   z.object({ _type: z.literal('booking_hero'), eyebrow: z.string(), title: z.string(), copy: z.string(), ready_title: z.string(), ready_copy: z.string(), pending_title: z.string(), pending_copy: z.string() }),
   z.object({ _type: z.literal('booking_options'), title: z.string() }),
-  z.object({ _type: z.literal('booking_expectations'), title: z.string(), items: z.array(textPair.extend({ icon: z.enum(['calendar', 'credit_card', 'lock']) })) })
+  z.object({ _type: z.literal('booking_expectations'), title: z.string(), items: z.array(textPair.extend({ icon: z.enum(['calendar', 'check', 'dumbbell']) })), contact_prompt: z.string(), contact_label: z.string() })
 ]);
 
 const pageBuilder = z.object({

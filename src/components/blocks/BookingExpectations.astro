@@ -1,8 +1,9 @@
 ---
-import { CalendarDays, CreditCard, LockKeyhole } from '@lucide/astro';
-const { title, items } = Astro.props;
-const icons = { calendar: CalendarDays, credit_card: CreditCard, lock: LockKeyhole };
+import { CalendarDays, CircleCheck, Dumbbell } from '@lucide/astro';
+import { site } from '@/data/site';
+const { title, items, contact_prompt, contact_label } = Astro.props;
+const icons = { calendar: CalendarDays, check: CircleCheck, dumbbell: Dumbbell };
 ---
 <section class="booking-expectations" aria-labelledby="expect-title"><div class="shell expectation-grid">
-  <h2 id="expect-title" data-editable="text" data-prop="title">{title}</h2><div data-editable="array" data-prop="items">{items.map((item: any) => { const Icon = icons[item.icon as keyof typeof icons] ?? CalendarDays; return <article data-editable="array-item"><Icon size={24} stroke-width={1.7} aria-hidden="true" /><h3 data-editable="text" data-prop="title">{item.title}</h3><p data-editable="text" data-prop="copy">{item.copy}</p></article>; })}</div>
+  <h2 id="expect-title" data-editable="text" data-prop="title">{title}</h2><div><div class="expectation-list" data-editable="array" data-prop="items">{items.map((item: any) => { const Icon = icons[item.icon as keyof typeof icons] ?? CalendarDays; return <article data-editable="array-item"><Icon size={24} stroke-width={1.7} aria-hidden="true" /><h3 data-editable="text" data-prop="title">{item.title}</h3><p data-editable="text" data-prop="copy">{item.copy}</p></article>; })}</div><p class="booking-contact"><span data-editable="text" data-prop="contact_prompt">{contact_prompt}</span> <a href={`mailto:${site.contact_email}`} data-editable="text" data-prop="contact_label">{contact_label}</a></p></div>
 </div></section>

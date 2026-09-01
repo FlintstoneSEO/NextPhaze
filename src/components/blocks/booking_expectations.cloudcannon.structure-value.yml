@@ -8,9 +8,13 @@ value:
   items:
     - icon: calendar
       title: Booking detail
-      copy: Explain what the booking provider handles.
+      copy: Explain the next step in booking.
+  contact_prompt:
+  contact_label:
 _inputs:
   title: { type: text }
   items:
     type: array
     options: { structures: _structures.expectation_items }
+  contact_prompt: { type: text }
+  contact_label: { type: text }

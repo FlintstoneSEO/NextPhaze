@@ -1,12 +1,14 @@
 ---
 import { ArrowRight } from '@lucide/astro';
+import { bookingHref, isExternalBookingHref } from '@/utils/booking';
 const { eyebrow, title, copy, image, image_alt, primary_label, primary_href, secondary_label, secondary_href } = Astro.props;
+const primaryCtaHref = bookingHref(primary_href);
 ---
 <section class="home-hero">
   <img class="hero-image" src={image} width="971" height="640" alt={image_alt} aria-hidden={!image_alt ? 'true' : undefined} fetchpriority="high" data-editable="image" data-prop-src="image" data-prop-alt="image_alt" />
   <div class="hero-scrim" aria-hidden="true"></div>
   <div class="shell home-hero-inner"><div class="home-hero-copy">
     <p class="eyebrow" data-editable="text" data-prop="eyebrow">{eyebrow}</p><h1 data-editable="text" data-prop="title">{title}</h1><p data-editable="text" data-prop="copy">{copy}</p>
-    <div class="hero-actions"><a class="button" href={primary_href}><editable-text data-prop="primary_label">{primary_label}</editable-text> <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" /></a><a class="button button-secondary" href={secondary_href}><editable-text data-prop="secondary_label">{secondary_label}</editable-text></a></div>
+    <div class="hero-actions"><a class="button" href={primaryCtaHref} target={isExternalBookingHref(primary_href) ? '_blank' : undefined} rel={isExternalBookingHref(primary_href) ? 'noopener noreferrer' : undefined}><editable-text data-prop="primary_label">{primary_label}</editable-text> <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" /></a><a class="button button-secondary" href={secondary_href}><editable-text data-prop="secondary_label">{secondary_label}</editable-text></a></div>
   </div></div>
 </section>

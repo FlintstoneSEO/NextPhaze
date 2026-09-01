@@ -377,6 +377,6 @@ _structures:
         _inputs:
           icon:
             type: select
-            options: { values: [calendar, credit_card, lock] }
+            options: { values: [dumbbell, calendar, check] }
           title: { type: text }
           copy: { type: textarea }

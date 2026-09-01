@@ -66,9 +66,9 @@ content_blocks:
       - question: Where does training happen?
         answer: Training serves the Nashville area. The exact venue is confirmed through the booking process because a permanent public facility has not been verified.
       - question: What ages can book?
-        answer: Age eligibility has not yet been published. Confirm athlete eligibility when Square booking becomes available.
+        answer: Age eligibility has not yet been published. Confirm athlete eligibility while booking through Square.
       - question: How do I schedule?
-        answer: NextPhaze is preparing a Square booking and payment link. The booking page will connect directly to Square once that URL is available.
+        answer: Select Book Training to view availability and securely book through Square.
   - _type: booking_cta
     title: Ready for your next phase?
     copy: Choose group or one-on-one training, review the price, and prepare to book through Square.

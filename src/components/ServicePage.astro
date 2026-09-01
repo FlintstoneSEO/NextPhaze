@@ -1,9 +1,11 @@
 ---
 import { ArrowRight, Check, MoveRight } from '@lucide/astro';
+import { bookingHref, isExternalBookingHref } from '@/utils/booking';
 const {
   eyebrow, title, intro, price, price_suffix, image, image_alt, primary_label, primary_href,
   secondary_label, secondary_href, section_title, section_copy, topics, related_href, related_label
 } = Astro.props;
+const primaryCtaHref = bookingHref(primary_href);
 ---
 <main>
   <section class="page-hero service-hero">
@@ -13,7 +15,7 @@ const {
         <h1 data-editable="text" data-prop="title">{title}</h1>
         <p class="lede" data-editable="text" data-prop="intro">{intro}</p>
         <div class="hero-actions">
-          <a class="button" href={primary_href}><editable-text data-prop="primary_label">{primary_label}</editable-text> <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" /></a>
+          <a class="button" href={primaryCtaHref} target={isExternalBookingHref(primary_href) ? '_blank' : undefined} rel={isExternalBookingHref(primary_href) ? 'noopener noreferrer' : undefined}><editable-text data-prop="primary_label">{primary_label}</editable-text> <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" /></a>
           <a class="text-link" href={secondary_href}><editable-text data-prop="secondary_label">{secondary_label}</editable-text> <MoveRight size={18} stroke-width={1.8} aria-hidden="true" /></a>
         </div>
       </div>

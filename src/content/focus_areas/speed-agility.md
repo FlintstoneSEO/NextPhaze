@@ -28,7 +28,7 @@ service:
   related_label: Explore Wide Receiver Training
 cta:
   title: Move with more purpose.
-  copy: Choose a training format and connect to Square when booking opens.
+  copy: Choose a training format and continue to Square to view availability and book.
   label: Book Training
   href: /book-training/
 ---

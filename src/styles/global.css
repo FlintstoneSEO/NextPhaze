@@ -525,6 +525,10 @@ h3 {
   color: #d8d0c2;
 }
 
+.training-focus--interactive #focus-title {
+  max-width: 25ch;
+}
+
 .focus-interactive-list {
   display: grid;
   margin-top: clamp(2.5rem, 5vw, 4.5rem);
@@ -1313,7 +1317,7 @@ h3 {
   grid-template-columns: 0.6fr 1.4fr;
 }
 
-.expectation-grid > div {
+.expectation-list {
   display: grid;
   gap: 2.6rem;
 }
@@ -1335,6 +1339,22 @@ h3 {
   max-width: 48ch;
   margin: 0;
   color: var(--muted);
+}
+
+.booking-contact {
+  margin: 2.75rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.booking-contact a {
+  color: var(--text);
+  font-weight: 750;
+}
+
+.booking-contact a:hover {
+  color: var(--gold);
 }
 
 .legal-page,

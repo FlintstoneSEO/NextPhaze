@@ -9,9 +9,9 @@
     { "label": "Service Area", "href": "/#service-area" }
   ],
   "header_cta": { "label": "Book Training", "href": "/book-training/" },
-  "booking_ready_label": "Continue to Square",
-  "booking_pending_label": "Square Link Pending",
-  "booking_pending_note": "Online scheduling will activate when the Square booking link is connected.",
+  "booking_ready_label": "View Availability & Book",
+  "booking_pending_label": "Online Booking Unavailable",
+  "booking_pending_note": "Contact Coach Carrington for help scheduling a session.",
   "footer_copy": "Performance training built for the next phase in Nashville, Tennessee.",
   "contact_name": "Coach Carrington Thompson",
   "contact_email": "carrington.j.Thompson15@gmail.com",

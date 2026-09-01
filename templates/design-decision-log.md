@@ -20,9 +20,11 @@ Decision: describe the service as serving Nashville without claiming a storefron
 
 Decision: write for athletes and evaluating parents without naming youth, high-school, adult, or other age groups until the client confirms eligibility.
 
-## 2026-08-30: Booking
+## 2026-09-01: Booking
 
-Decision pending: CTA destinations can route to `/book-training/`, but the final submission or scheduling action requires a client-supplied booking URL or approved lead-capture workflow.
+Decision: use the client-supplied Square Appointments URL (`https://squareup.com/appointments/book/L37PZ2ZJNK5ET`) as the central booking destination. Primary “Book Training” calls to action open Square in a new tab; the dedicated `/book-training/` page remains available for direct navigation and its training-option controls also open Square. The outbound handoff is not represented as a completed booking.
+
+Revision: keep the booking provider implementation behind the existing links, but make the dedicated booking page provider-neutral. The page now focuses on choosing a training format, selecting an available time, and confirming the session, with a direct email link to Coach Carrington for questions.
 
 ## 2026-08-30: Homepage hero media
 

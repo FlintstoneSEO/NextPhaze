@@ -28,7 +28,7 @@ service:
   related_label: Compare Group Training
 cta:
   title: Focused work starts here.
-  copy: Choose one-on-one training and connect to Square when booking opens.
+  copy: Choose one-on-one training and continue to Square to view availability and book.
   label: Book Training
   href: /book-training/
 ---

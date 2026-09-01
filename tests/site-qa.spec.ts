@@ -45,13 +45,19 @@ test('mobile navigation opens, exposes links, and closes', async ({ page }) => {
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
 });
 
-test('Book Training journey reaches the Square-ready page', async ({ page }) => {
+test('booking links open the connected Square scheduler', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
-  await page.getByRole('link', { name: 'Book Training' }).first().click();
-  await expect(page).toHaveURL(/\/book-training\/$/);
+  await expect(page.getByRole('link', { name: 'Book Training' }).first()).toHaveAttribute('href', 'https://squareup.com/appointments/book/L37PZ2ZJNK5ET');
+  await expect(page.getByRole('link', { name: 'Book Training' }).first()).toHaveAttribute('target', '_blank');
+
+  await page.goto('/book-training/');
   await expect(page.getByRole('heading', { level: 1, name: 'Choose Your Training Format' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Square Link Pending' })).toHaveCount(2);
+  await expect(page.getByText('Online booking is available')).toBeVisible();
+  await expect(page.getByRole('link', { name: /View Availability & Book/ })).toHaveCount(2);
+  await expect(page.getByRole('link', { name: /View Availability & Book/ }).first()).toHaveAttribute('href', 'https://squareup.com/appointments/book/L37PZ2ZJNK5ET');
+  await expect(page.getByRole('link', { name: 'Contact Coach Carrington' })).toHaveAttribute('href', 'mailto:carrington.j.Thompson15@gmail.com');
+  await expect(page.getByText(/Square/i)).toHaveCount(0);
 });
 
 test('training-focus selection expands the matching item and background', async ({ page }) => {
