@@ -861,6 +861,16 @@ h3 {
   grid-template-columns: 1.05fr 0.95fr;
 }
 
+.service-hero-grid {
+  gap: clamp(2.5rem, 5vw, 5rem);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+}
+
+.service-hero .page-hero-copy h1 {
+  max-width: 12ch;
+  font-size: clamp(3.5rem, 5vw, 5rem);
+}
+
 .page-hero-grid > *,
 .service-hero-grid > *,
 .coach-hero-grid > *,

@@ -88,6 +88,21 @@ test('training-focus mobile content does not overlap', async ({ page }) => {
   await expect(activeItem.locator('.focus-link')).toBeVisible();
 });
 
+test('group training hero copy stays clear of the media on desktop', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/training/group/', { waitUntil: 'networkidle' });
+
+  const headingBox = await page.getByRole('heading', { level: 1 }).boundingBox();
+  const mediaBox = await page.locator('.service-hero-media').boundingBox();
+
+  expect(headingBox).not.toBeNull();
+  expect(mediaBox).not.toBeNull();
+  expect(headingBox!.x + headingBox!.width).toBeLessThanOrEqual(mediaBox!.x);
+  await expect(page.locator('.service-hero .lede')).toBeVisible();
+  await expect(page.locator('.service-hero .hero-actions')).toBeVisible();
+  await page.screenshot({ path: 'artifacts/screenshots/group-training-1440.png', fullPage: true });
+});
+
 for (const width of [320, 375, 390, 768, 1024, 1440]) {
   test(`homepage screenshot and reflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 });
