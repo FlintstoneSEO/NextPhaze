@@ -47,3 +47,9 @@ Revision: remove the `15 / Western Michigan` overlay after visual review. The po
 ## 2026-08-31: Homepage training-focus interaction
 
 Decision: make the training-focus section image-backed and interactive. Selecting a focus opens its description and changes the full-section background image; desktop hover and keyboard focus provide a temporary preview, while a click or tap locks the selection. The directional arrow remains a separate link to the relevant training page so exploration does not unexpectedly navigate away.
+
+## 2026-09-02: Training-page sequence and display-heading corrections
+
+Decision: replace the training hero's three equal static boxes with a numbered, staggered Movement / Repetition / Application sequence. Use a restrained route-line draw and staged entrance animation, with a linear mobile composition and a reduced-motion fallback. This preserves the approved Training Lab direction while making the sequence feel purposeful without implying that the non-interactive stages are controls.
+
+Decision: remove the internal-facing storefront-verification note from the visible Nashville service-area section while retaining the accurate public statement that the exact location is confirmed during booking. Allow section display headings to use their available width with balanced wrapping, remove the unintended offset above the $30 format card, and reserve sufficient footer width for the verified public email address.

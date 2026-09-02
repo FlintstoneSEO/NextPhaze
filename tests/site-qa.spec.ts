@@ -103,6 +103,52 @@ test('group training hero copy stays clear of the media on desktop', async ({ pa
   await page.screenshot({ path: 'artifacts/screenshots/group-training-1440.png', fullPage: true });
 });
 
+test('training sequence and format cards render without the old static-box offset', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/training/', { waitUntil: 'networkidle' });
+
+  await expect(page.locator('.route-diagram')).toHaveAttribute('aria-label', 'Training sequence');
+  await expect(page.locator('.route-diagram li')).toHaveCount(3);
+  await expect(page.locator('.route-number')).toHaveText(['01', '02', '03']);
+  await page.waitForTimeout(1100);
+
+  const cards = page.locator('.format-grid article');
+  const firstCard = await cards.nth(0).boundingBox();
+  const secondCard = await cards.nth(1).boundingBox();
+  expect(firstCard).not.toBeNull();
+  expect(secondCard).not.toBeNull();
+  expect(secondCard!.y).toBe(firstCard!.y);
+  await page.screenshot({ path: 'artifacts/screenshots/training-1440.png', fullPage: true });
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.screenshot({ path: 'artifacts/screenshots/training-390.png', fullPage: true });
+});
+
+test('service-area disclaimer is not displayed and footer email remains intact', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/', { waitUntil: 'networkidle' });
+
+  await expect(page.getByText('No unverified storefront or fixed facility is claimed.')).toHaveCount(0);
+  const email = page.locator('.footer-contact a[href^="mailto:"]');
+  await expect(email).toHaveText('carrington.j.Thompson15@gmail.com');
+  const lineCount = await email.evaluate((element) => Math.round(element.getBoundingClientRect().height / Number.parseFloat(getComputedStyle(element).lineHeight)));
+  expect(lineCount).toBe(1);
+});
+
+test('training sequence reflows across the required viewport set', async ({ page }) => {
+  for (const width of [320, 375, 390, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 });
+    await page.goto('/training/', { waitUntil: 'networkidle' });
+    await page.waitForTimeout(1100);
+
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow, `${width}px viewport overflow`).toBeLessThanOrEqual(0);
+    await expect(page.locator('.route-diagram li')).toHaveCount(3);
+    await expect(page.locator('.route-diagram li').nth(2)).toBeVisible();
+  }
+});
+
 for (const width of [320, 375, 390, 768, 1024, 1440]) {
   test(`homepage screenshot and reflow at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 });

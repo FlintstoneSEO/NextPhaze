@@ -6,5 +6,7 @@ const buttonHref = bookingHref(button_href);
 ---
 <section class="page-hero training-index-hero"><div class="shell page-hero-grid">
   <div class="page-hero-copy"><p class="eyebrow" data-editable="text" data-prop="eyebrow">{eyebrow}</p><h1 data-editable="text" data-prop="title">{title}</h1><p class="lede" data-editable="text" data-prop="copy">{copy}</p><a class="button" href={buttonHref} target={isExternalBookingHref(button_href) ? '_blank' : undefined} rel={isExternalBookingHref(button_href) ? 'noopener noreferrer' : undefined}><editable-text data-prop="button_label">{button_label}</editable-text> <ArrowRight size={19} stroke-width={1.8} aria-hidden="true" /></a></div>
-  <div class="route-diagram" aria-label="Training route diagram" data-editable="array" data-prop="route_steps">{route_steps.map((step: any, index: number) => <div class="contents" data-editable="array-item"><div data-editable="text" data-prop="label">{step.label}</div>{index < route_steps.length - 1 && <span aria-hidden="true"></span>}</div>)}</div>
+  <ol class="route-diagram" aria-label="Training sequence" data-editable="array" data-prop="route_steps">
+    {route_steps.map((step: any, index: number) => <li data-editable="array-item"><span class="route-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><strong data-editable="text" data-prop="label">{step.label}</strong></li>)}
+  </ol>
 </div></section>
