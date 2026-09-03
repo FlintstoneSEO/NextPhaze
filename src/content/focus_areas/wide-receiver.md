@@ -28,7 +28,7 @@ service:
   related_label: Meet Coach Carrington
 cta:
   title: Train the details of the position.
-  copy: Choose a training format and continue to Square to view availability and book.
+  copy: Choose a training format and continue online to view availability and book.
   label: Book Training
   href: /book-training/
 ---

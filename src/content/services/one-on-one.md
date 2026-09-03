@@ -23,12 +23,12 @@ service:
     - title: Intentional pace
       copy: Use the session to stay close to the mechanics and decisions being trained.
     - title: Clear next action
-      copy: Review the confirmed $60 price and continue into the Square booking flow.
+      copy: Review the confirmed $60 price and continue into the online booking flow.
   related_href: /training/group/
   related_label: Compare Group Training
 cta:
   title: Focused work starts here.
-  copy: Choose one-on-one training and continue to Square to view availability and book.
+  copy: Choose one-on-one training and continue online to view availability and book.
   label: Book Training
   href: /book-training/
 ---

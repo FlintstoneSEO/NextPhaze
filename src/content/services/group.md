@@ -28,7 +28,7 @@ service:
   related_label: Compare 1-on-1 Training
 cta:
   title: Bring purpose to the group.
-  copy: Choose group training and continue to Square to view availability and book.
+  copy: Choose group training and continue online to view availability and book.
   label: Book Training
   href: /book-training/
 ---

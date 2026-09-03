@@ -23,8 +23,7 @@ content_blocks:
     image_alt: AI-generated agility ladder and training cones arranged on turf
   - _type: booking_cta
     title: Choose the work. Book the session.
-    copy: Choose group or one-on-one training, review the price, and prepare to book through Square.
+    copy: Choose group or one-on-one training, review the price, and continue to online booking.
     label: Book Training
     href: /book-training/
 ---
-

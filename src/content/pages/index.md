@@ -66,12 +66,12 @@ content_blocks:
       - question: Where does training happen?
         answer: Training serves the Nashville area. The exact venue is confirmed through the booking process because a permanent public facility has not been verified.
       - question: What ages can book?
-        answer: Age eligibility has not yet been published. Confirm athlete eligibility while booking through Square.
+        answer: Age eligibility has not yet been published. Confirm athlete eligibility during online booking.
       - question: How do I schedule?
-        answer: Select Book Training to view availability and securely book through Square.
+        answer: Select Book Training to view availability and book online.
   - _type: booking_cta
     title: Ready for your next phase?
-    copy: Choose group or one-on-one training, review the price, and prepare to book through Square.
+    copy: Choose group or one-on-one training, review the price, and continue to online booking.
     label: Book Training
     href: /book-training/
 ---

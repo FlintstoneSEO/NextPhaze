@@ -60,6 +60,13 @@ test('booking links open the connected Square scheduler', async ({ page }) => {
   await expect(page.getByText(/Square/i)).toHaveCount(0);
 });
 
+test('public pages use provider-neutral booking language', async ({ page }) => {
+  for (const route of routes) {
+    await page.goto(route, { waitUntil: 'networkidle' });
+    await expect(page.locator('body')).not.toContainText(/Square/i);
+  }
+});
+
 test('training-focus selection expands the matching item and background', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('/', { waitUntil: 'networkidle' });

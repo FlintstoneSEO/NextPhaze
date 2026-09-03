@@ -11,9 +11,9 @@ effective_date: August 30, 2026
 
 This website is currently configured without analytics, advertising pixels, or an online inquiry form. The hosting provider may process standard technical request data such as IP addresses, browser information, and server logs for security and delivery.
 
-## Square booking and payments
+## External booking and payments
 
-NextPhaze plans to use Square for scheduling and payments. When that connection is activated, Square will process information under its own privacy terms. This policy must be reviewed and updated when the live Square workflow is added.
+When you follow a booking link, the external booking service may process scheduling, contact, and payment information under its own privacy terms. Review that service's terms before submitting your information.
 
 ## External links
 

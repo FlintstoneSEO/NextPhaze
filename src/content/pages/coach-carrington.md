@@ -63,7 +63,7 @@ content_blocks:
   - _type: booking_cta
     title: Bring experience into the work.
     copy: Choose group or one-on-one training, review the price, and prepare to book
-      through Square.
+      online.
     label: Book Training
     href: /book-training/
 ---
