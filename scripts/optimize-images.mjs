@@ -5,6 +5,7 @@ const assets = [
   ['Project Source/Images/Carrington Action Shot2.PNG', 'public/images/carrington-wmu-proof.webp', 1200, 84],
   ['Project Source/Images/Carrington Action 5.png', 'public/images/carrington-mpif-proof.webp', 1200, 84],
   ['Project Source/Images/Image of Carrington.png', 'public/images/carrington-coach-portrait.webp', 900, 86],
+  ['Project Source/Images/Carrington WMU Diving Catch.jpg', 'public/images/carrington-wmu-diving-catch.webp', 1200, 86],
   ['public/images/training-acceleration.png', 'public/images/training-acceleration.webp', 1600, 82],
   ['public/images/training-lane.png', 'public/images/training-lane.webp', 1600, 82],
   ['public/images/receiver-catch.png', 'public/images/receiver-catch.webp', 1400, 82],

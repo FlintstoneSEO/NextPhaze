@@ -185,3 +185,29 @@ for (const route of ['/coach-carrington/', '/book-training/']) {
     await page.screenshot({ path: `artifacts/screenshots/${name}-1440.png`, fullPage: true });
   });
 }
+
+test('coach statistics remain readable over the career image across viewports', async ({ page }) => {
+  for (const width of [390, 1440]) {
+    await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
+    await page.goto('/coach-carrington/', { waitUntil: 'networkidle' });
+
+    const stats = page.locator('.career-stats');
+    const story = page.locator('.career-story');
+    const image = stats.locator('.career-stats-background');
+    const statsBox = await stats.boundingBox();
+    const storyBox = await story.boundingBox();
+
+    expect(statsBox).not.toBeNull();
+    expect(storyBox).not.toBeNull();
+    expect(storyBox!.y).toBeGreaterThanOrEqual(statsBox!.y + statsBox!.height - 1);
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(() => image.evaluate((element: HTMLImageElement) => element.complete)).toBe(true);
+    expect(await image.evaluate((element: HTMLImageElement) => element.naturalWidth)).toBeGreaterThan(0);
+    await expect(stats.getByRole('heading', { level: 2 })).toBeVisible();
+    await expect(stats.locator('.stat-grid > div')).toHaveCount(3);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(0);
+
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.screenshot({ path: `artifacts/screenshots/coach-carrington-${width}.png`, fullPage: true });
+  }
+});

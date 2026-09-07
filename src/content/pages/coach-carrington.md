@@ -17,6 +17,8 @@ content_blocks:
     title: Collegiate production across Northwood and Western Michigan.
     copy: These totals combine Carrington's verified Northwood and Western Michigan
       records.
+    image: /images/carrington-wmu-diving-catch.webp
+    image_alt: Carrington Thompson wearing number 15 dives to make a catch for Western Michigan
     stats:
       - value: '139'
         label: Receptions

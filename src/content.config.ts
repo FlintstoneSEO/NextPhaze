@@ -20,7 +20,7 @@ const contentBlock = z.discriminatedUnion('_type', [
   z.object({ _type: z.literal('format_section'), title: z.string(), copy: z.string() }),
   z.object({ _type: z.literal('focus_index'), title: z.string(), image: z.string(), image_alt: z.string() }),
   z.object({ _type: z.literal('coach_hero'), eyebrow: z.string(), title: z.string(), copy: z.string(), button_label: z.string(), button_href: z.string(), image: z.string(), image_alt: z.string() }),
-  z.object({ _type: z.literal('career_stats'), title: z.string(), copy: z.string(), stats: z.array(valueLabel) }),
+  z.object({ _type: z.literal('career_stats'), title: z.string(), copy: z.string(), image: z.string(), image_alt: z.string(), stats: z.array(valueLabel) }),
   z.object({ _type: z.literal('career_story'), title: z.string(), copy: z.string(), items: z.array(textPair) }),
   z.object({ _type: z.literal('performance_callout'), eyebrow: z.string(), title: z.string(), date: z.string(), link_label: z.string(), link_href: z.string() }),
   z.object({ _type: z.literal('source_section'), title: z.string(), copy: z.string(), links: z.array(labelLink) }),

@@ -44,6 +44,10 @@ Decision: replace the abstract right-side coach hero mark with the client-select
 
 Revision: remove the `15 / Western Michigan` overlay after visual review. The portrait is stronger without competing text, while Carrington's Western Michigan history remains documented in the career content below.
 
+## 2026-09-06: Coach page career image
+
+Decision: use the newly supplied Western Michigan diving-catch photograph behind the collegiate statistics with a strong directional scrim and dark statistic panels. Retain the personal portrait in the hero and keep the career timeline as the following section. This replaces the initially tested standalone editorial transition, which the client rejected after visual review.
+
 ## 2026-08-31: Homepage training-focus interaction
 
 Decision: make the training-focus section image-backed and interactive. Selecting a focus opens its description and changes the full-section background image; desktop hover and keyboard focus provide a temporary preview, while a click or tap locks the selection. The directional arrow remains a separate link to the relevant training page so exploration does not unexpectedly navigate away.

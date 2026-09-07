@@ -26,4 +26,3 @@ export const componentMap = {
   performance_callout: PerformanceCallout, source_section: SourceSection,
   booking_hero: BookingHero, booking_options: BookingOptions, booking_expectations: BookingExpectations
 } as const;
-

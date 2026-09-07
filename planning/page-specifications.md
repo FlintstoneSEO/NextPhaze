@@ -36,7 +36,7 @@ Objective: explain receiver and football-skill coaching with relevant Carrington
 
 ## `/coach-carrington/`
 
-Objective: establish credibility after explaining Carrington's role as coach. H1: `Coach Carrington Thompson`. Verified proof: Western Michigan #15, 2016 MAC Champion and Cotton Bowl team member, 139 collegiate receptions, 1,936 collegiate receiving yards, 18 collegiate touchdowns across Northwood and Western Michigan, West Michigan Ironmen experience, 2018 MPIF champion, 2018 MPIF Offensive Rookie of the Year. External source links are text-only unless media rights permit otherwise. Title: `Coach Carrington Thompson | NextPhaze Nashville`.
+Objective: establish credibility after explaining Carrington's role as coach. H1: `Coach Carrington Thompson`. Verified proof: Western Michigan #15, 2016 MAC Champion and Cotton Bowl team member, 139 collegiate receptions, 1,936 collegiate receiving yards, 18 collegiate touchdowns across Northwood and Western Michigan, West Michigan Ironmen experience, 2018 MPIF champion, 2018 MPIF Offensive Rookie of the Year. A client-supplied Western Michigan action photograph sits behind the collegiate statistics with a contrast-preserving overlay. External source links are text-only unless media rights permit otherwise. Title: `Coach Carrington Thompson | NextPhaze Nashville`.
 
 ## `/book-training/`
 

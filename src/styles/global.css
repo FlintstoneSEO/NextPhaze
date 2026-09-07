@@ -1152,7 +1152,55 @@ h3 {
 }
 
 .career-stats {
-  background: var(--surface);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #12110f;
+  color: #f2efe8;
+}
+
+.career-stats::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(10 9 8 / 90%) 0%, rgb(10 9 8 / 74%) 50%, rgb(10 9 8 / 38%) 100%),
+    linear-gradient(0deg, rgb(10 9 8 / 72%) 0%, transparent 60%);
+  content: '';
+}
+
+.career-stats-background {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 54% 52%;
+}
+
+.career-stats .section-heading {
+  max-width: 960px;
+}
+
+.career-stats .section-heading p {
+  color: #ded8cc;
+}
+
+.career-stats .stat-grid {
+  background: rgb(255 255 255 / 24%);
+}
+
+.career-stats .stat-grid > div {
+  background: rgb(10 9 8 / 78%);
+}
+
+.career-stats .stat-grid strong {
+  color: #d0ad5f;
+}
+
+.career-stats .stat-grid span {
+  color: #f2efe8;
 }
 
 .career-stats .section-heading h2 {
@@ -1654,6 +1702,20 @@ h3 {
 
   h2 {
     font-size: clamp(2.45rem, 11vw, 4.4rem);
+  }
+
+  .career-stats::before {
+    background:
+      linear-gradient(180deg, rgb(10 9 8 / 88%) 0%, rgb(10 9 8 / 72%) 44%, rgb(10 9 8 / 86%) 100%),
+      linear-gradient(90deg, rgb(10 9 8 / 70%) 0%, rgb(10 9 8 / 30%) 100%);
+  }
+
+  .career-stats-background {
+    object-position: 62% 50%;
+  }
+
+  .career-stats .stat-grid > div {
+    background: rgb(10 9 8 / 74%);
   }
 
   .menu-button {
