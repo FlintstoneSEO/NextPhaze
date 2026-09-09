@@ -1164,8 +1164,8 @@ h3 {
   z-index: -1;
   inset: 0;
   background:
-    linear-gradient(90deg, rgb(10 9 8 / 90%) 0%, rgb(10 9 8 / 74%) 50%, rgb(10 9 8 / 38%) 100%),
-    linear-gradient(0deg, rgb(10 9 8 / 72%) 0%, transparent 60%);
+    linear-gradient(90deg, rgb(10 9 8 / 82%) 0%, rgb(10 9 8 / 58%) 50%, rgb(10 9 8 / 22%) 100%),
+    linear-gradient(0deg, rgb(10 9 8 / 54%) 0%, transparent 60%);
   content: '';
 }
 
@@ -1192,7 +1192,7 @@ h3 {
 }
 
 .career-stats .stat-grid > div {
-  background: rgb(10 9 8 / 78%);
+  background: rgb(10 9 8 / 66%);
 }
 
 .career-stats .stat-grid strong {
@@ -1706,8 +1706,8 @@ h3 {
 
   .career-stats::before {
     background:
-      linear-gradient(180deg, rgb(10 9 8 / 88%) 0%, rgb(10 9 8 / 72%) 44%, rgb(10 9 8 / 86%) 100%),
-      linear-gradient(90deg, rgb(10 9 8 / 70%) 0%, rgb(10 9 8 / 30%) 100%);
+      linear-gradient(180deg, rgb(10 9 8 / 76%) 0%, rgb(10 9 8 / 48%) 44%, rgb(10 9 8 / 70%) 100%),
+      linear-gradient(90deg, rgb(10 9 8 / 50%) 0%, rgb(10 9 8 / 12%) 100%);
   }
 
   .career-stats-background {
@@ -1715,7 +1715,7 @@ h3 {
   }
 
   .career-stats .stat-grid > div {
-    background: rgb(10 9 8 / 74%);
+    background: rgb(10 9 8 / 62%);
   }
 
   .menu-button {
