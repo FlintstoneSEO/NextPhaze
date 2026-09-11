@@ -1,5 +1,5 @@
 ---
-title: Focused 1-on-1 Athletic Training
+title: 1-on-1 Athletic Training in Nashville, TN | NextPhaze
 description: Book focused 1-on-1 athletic training with Coach Carrington Thompson in Nashville for $60 per session.
 service:
   eyebrow: 1-on-1 Training

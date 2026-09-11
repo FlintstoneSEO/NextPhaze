@@ -1,5 +1,5 @@
 ---
-title: Group Training That Builds Competitive Habits
+title: Group Athletic Training in Nashville, TN | NextPhaze
 description: Train with NextPhaze in a group setting for $30 per session. Build speed, movement, football skills and competitive habits in Nashville.
 service:
   eyebrow: Group Training
