@@ -11,6 +11,7 @@ import FormatSection from '@/components/blocks/FormatSection.astro';
 import FocusIndex from '@/components/blocks/FocusIndex.astro';
 import CoachHero from '@/components/blocks/CoachHero.astro';
 import CareerStats from '@/components/blocks/CareerStats.astro';
+import ProfessionalCareer from '@/components/blocks/ProfessionalCareer.astro';
 import CareerStory from '@/components/blocks/CareerStory.astro';
 import PerformanceCallout from '@/components/blocks/PerformanceCallout.astro';
 import SourceSection from '@/components/blocks/SourceSection.astro';
@@ -22,7 +23,7 @@ export const componentMap = {
   home_hero: HomeHero, pricing_rail: PricingRail, training_focus: TrainingFocus, process: Process,
   coach_proof: CoachProof, service_area: ServiceArea, faq: Faq, booking_cta: BookingCta,
   training_hero: TrainingHero, format_section: FormatSection, focus_index: FocusIndex,
-  coach_hero: CoachHero, career_stats: CareerStats, career_story: CareerStory,
+  coach_hero: CoachHero, career_stats: CareerStats, professional_career: ProfessionalCareer, career_story: CareerStory,
   performance_callout: PerformanceCallout, source_section: SourceSection,
   booking_hero: BookingHero, booking_options: BookingOptions, booking_expectations: BookingExpectations
 } as const;

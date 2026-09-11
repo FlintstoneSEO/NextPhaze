@@ -6,6 +6,7 @@ const textPair = z.object({ title: z.string(), copy: z.string() });
 const labelLink = z.object({ label: z.string(), href: z.string() });
 const valueLabel = z.object({ value: z.string(), label: z.string() });
 const credentialPanel = valueLabel.extend({ detail: z.string().nullish(), image: z.string(), image_alt: z.string() });
+const professionalTeam = z.object({ name: z.string(), state: z.string(), image: z.string(), image_alt: z.string() });
 
 const contentBlock = z.discriminatedUnion('_type', [
   z.object({ _type: z.literal('home_hero'), eyebrow: z.string(), title: z.string(), copy: z.string(), image: z.string(), image_alt: z.string(), primary_label: z.string(), primary_href: z.string(), secondary_label: z.string(), secondary_href: z.string() }),
@@ -21,6 +22,7 @@ const contentBlock = z.discriminatedUnion('_type', [
   z.object({ _type: z.literal('focus_index'), title: z.string(), image: z.string(), image_alt: z.string() }),
   z.object({ _type: z.literal('coach_hero'), eyebrow: z.string(), title: z.string(), copy: z.string(), button_label: z.string(), button_href: z.string(), image: z.string(), image_alt: z.string() }),
   z.object({ _type: z.literal('career_stats'), title: z.string(), copy: z.string(), image: z.string(), image_alt: z.string(), stats: z.array(valueLabel) }),
+  z.object({ _type: z.literal('professional_career'), eyebrow: z.string(), title: z.string(), copy: z.string(), stats: z.array(valueLabel), teams: z.array(professionalTeam) }),
   z.object({ _type: z.literal('career_story'), title: z.string(), copy: z.string(), items: z.array(textPair) }),
   z.object({ _type: z.literal('performance_callout'), eyebrow: z.string(), title: z.string(), date: z.string(), link_label: z.string(), link_href: z.string() }),
   z.object({ _type: z.literal('source_section'), title: z.string(), copy: z.string(), links: z.array(labelLink) }),

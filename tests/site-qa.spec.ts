@@ -205,9 +205,46 @@ test('coach statistics remain readable over the career image across viewports', 
     expect(await image.evaluate((element: HTMLImageElement) => element.naturalWidth)).toBeGreaterThan(0);
     await expect(stats.getByRole('heading', { level: 2 })).toBeVisible();
     await expect(stats.locator('.stat-grid > div')).toHaveCount(3);
+    const professionalImages = page.locator('.professional-team img');
+    await professionalImages.last().scrollIntoViewIfNeeded();
+    for (let index = 0; index < await professionalImages.count(); index += 1) {
+      await expect.poll(() => professionalImages.nth(index).evaluate((element: HTMLImageElement) => element.complete && element.naturalWidth > 0)).toBe(true);
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(0);
 
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({ path: `artifacts/screenshots/coach-carrington-${width}.png`, fullPage: true });
   }
+});
+
+test('coach professional totals and team history render across viewports', async ({ page }) => {
+  for (const width of [320, 390, 768, 1024, 1440]) {
+    await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 });
+    await page.goto('/coach-carrington/', { waitUntil: 'networkidle' });
+
+    const career = page.locator('.professional-career');
+    await expect(career.getByRole('heading', { level: 2, name: 'Professional production across Iowa, Tucson, and Nashville.' })).toBeVisible();
+    await expect(career.locator('.professional-stat-grid > div')).toHaveCount(3);
+    await expect(career.locator('.professional-team-grid > li')).toHaveCount(3);
+    await expect(career.getByText('Iowa Barnstormers')).toBeVisible();
+    await expect(career.getByText('Tucson Sugar Skulls')).toBeVisible();
+    await expect(career.getByText('Nashville Kats')).toBeVisible();
+    await expect(career.locator('.professional-team-state')).toHaveText(['Iowa', 'Arizona', 'Tennessee']);
+    await expect(career).not.toContainText(/2021|2022|2023|2024/);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(0);
+  }
+});
+
+test('professional team panel expands with State Line motion on desktop', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/coach-carrington/', { waitUntil: 'networkidle' });
+
+  const panel = page.locator('.professional-team-grid > li').nth(1);
+  await panel.scrollIntoViewIfNeeded();
+  const initialWidth = (await panel.boundingBox())?.width ?? 0;
+  await panel.hover();
+  await page.waitForTimeout(650);
+  const expandedWidth = (await panel.boundingBox())?.width ?? 0;
+
+  expect(expandedWidth).toBeGreaterThan(initialWidth);
 });

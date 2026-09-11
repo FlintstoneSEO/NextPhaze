@@ -1,0 +1,47 @@
+---
+const { eyebrow, title, copy, stats, teams } = Astro.props;
+---
+
+<section class="content-section professional-career" aria-labelledby="professional-career-title">
+  <div class="shell">
+    <header class="professional-career-heading">
+      <div>
+        <p class="eyebrow" data-editable="text" data-prop="eyebrow">{eyebrow}</p>
+        <h2 id="professional-career-title" data-editable="text" data-prop="title">{title}</h2>
+      </div>
+      <p data-editable="text" data-prop="copy">{copy}</p>
+    </header>
+
+    <dl class="professional-stat-grid" data-editable="array" data-prop="stats">
+      {stats.map((stat: any) => (
+        <div data-editable="array-item">
+          <dt data-editable="text" data-prop="label">{stat.label}</dt>
+          <dd data-editable="text" data-prop="value">{stat.value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <ol class="professional-team-grid" aria-label="Professional teams" data-editable="array" data-prop="teams">
+      {teams.map((team: any) => (
+        <li data-editable="array-item">
+          <figure class="professional-team">
+            <img
+              src={team.image}
+              alt={team.image_alt}
+              width="1200"
+              height="1500"
+              loading="lazy"
+              decoding="async"
+              data-editable="image"
+              data-prop="image"
+            />
+            <span class="professional-team-state" data-editable="text" data-prop="state">{team.state}</span>
+            <figcaption>
+              <strong data-editable="text" data-prop="name">{team.name}</strong>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

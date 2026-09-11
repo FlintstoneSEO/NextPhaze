@@ -26,6 +26,31 @@ content_blocks:
         label: Receiving yards
       - value: '18'
         label: Receiving touchdowns
+  - _type: professional_career
+    eyebrow: IFL + AFL Career
+    title: Professional production across Iowa, Tucson, and Nashville.
+    copy: Carrington continued his professional career across the IFL and AFL,
+      competing for Iowa, Tucson, and Nashville.
+    stats:
+      - value: '412'
+        label: Receptions
+      - value: 3,268
+        label: Receiving yards
+      - value: '57'
+        label: Receiving touchdowns
+    teams:
+      - name: Iowa Barnstormers
+        state: Iowa
+        image: /images/carrington-iowa-barnstormers.webp
+        image_alt: Carrington Thompson reaches over a defender to make a catch for the Iowa Barnstormers
+      - name: Tucson Sugar Skulls
+        state: Arizona
+        image: /images/carrington-tucson-sugar-skulls.webp
+        image_alt: Carrington Thompson catches a football while playing for the Tucson Sugar Skulls
+      - name: Nashville Kats
+        state: Tennessee
+        image: /images/carrington-nashville-kats.webp
+        image_alt: Carrington Thompson walks beside the field in his Nashville uniform
   - _type: career_story
     title: A path built through every phase.
     copy: From Houston to Northwood, Western Michigan, a championship season, and

@@ -1,0 +1,27 @@
+label: Professional career
+icon: trophy
+picker_preview: { text: [Professional career], icon: [trophy] }
+preview: { text: [{ key: title }, Professional career], icon: [trophy] }
+value:
+  _type: professional_career
+  eyebrow: IFL + AFL Career
+  title:
+  copy:
+  stats:
+    - value: "0"
+      label: Career statistic
+  teams:
+    - name: Professional team
+      state:
+      image:
+      image_alt:
+_inputs:
+  eyebrow: { type: text }
+  title: { type: text }
+  copy: { type: textarea }
+  stats:
+    type: array
+    options: { structures: _structures.stat_items }
+  teams:
+    type: array
+    options: { structures: _structures.professional_team_items }

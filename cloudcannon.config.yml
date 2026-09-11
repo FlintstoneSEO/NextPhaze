@@ -353,6 +353,22 @@ _structures:
         _inputs:
           title: { type: text }
           copy: { type: textarea }
+  professional_team_items:
+    values:
+      - label: Professional team
+        icon: sports_football
+        picker_preview: { text: [Professional team], icon: [sports_football] }
+        preview:
+          text: [{ key: name }, Professional team]
+          subtext: [{ key: state }]
+          image: [{ key: image }]
+          icon: [sports_football]
+        value: { name: null, state: null, image: null, image_alt: null }
+        _inputs:
+          name: { type: text }
+          state: { type: text }
+          image: { type: image }
+          image_alt: { type: text }
   source_links:
     values:
       - label: Source link

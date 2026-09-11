@@ -48,6 +48,12 @@ Revision: remove the `15 / Western Michigan` overlay after visual review. The po
 
 Decision: use the newly supplied Western Michigan diving-catch photograph behind the collegiate statistics with a strong directional scrim and dark statistic panels. Retain the personal portrait in the hero and keep the career timeline as the following section. This replaces the initially tested standalone editorial transition, which the client rejected after visual review.
 
+## 2026-09-10: Coach page professional career
+
+Decision: add a separate professional-career section after the collegiate statistics so college and professional production remain clearly distinguished. Display the client-confirmed combined totals of 412 receptions, 3,268 receiving yards, and 57 receiving touchdowns above a three-team editorial image sequence: Iowa Barnstormers (2021), Tucson Sugar Skulls (2022–2023), and Nashville Kats (2024). Use the client-supplied photographs, the official Nashville Kats spelling, and a single-column mobile timeline.
+
+Revision: replace the visible season labels with oversized outlined state-name overlays for Iowa, Arizona, and Tennessee. On hover-capable desktop devices, the selected panel subtly expands while its photograph, state lettering, team name, and gold rule move as one composition. Keep the stacked mobile and reduced-motion experiences static.
+
 ## 2026-08-31: Homepage training-focus interaction
 
 Decision: make the training-focus section image-backed and interactive. Selecting a focus opens its description and changes the full-section background image; desktop hover and keyboard focus provide a temporary preview, while a click or tap locks the selection. The directional arrow remains a separate link to the relevant training page so exploration does not unexpectedly navigate away.
