@@ -1,10 +1,10 @@
 ---
-title: Wide Receiver Training Built for the Position
+title: Wide Receiver Training in Nashville, TN | NextPhaze
 description: Train receiver footwork, releases, route running and position-specific skills in Nashville with former Western Michigan WR Carrington Thompson.
 service:
   eyebrow: Receiver Skills
   title: Wide Receiver Training Built for the Position
-  intro: Train stance, releases, route detail, catching, and position movement with an experienced receiver.
+  intro: Train stance, releases, route detail, catching, and position movement with an experienced receiver in Nashville, Tennessee.
   price:
   price_suffix: per session
   image: /images/receiver-catch.webp

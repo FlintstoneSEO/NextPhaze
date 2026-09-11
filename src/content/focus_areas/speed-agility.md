@@ -1,10 +1,10 @@
 ---
-title: Speed and Agility Training for Game Movement
+title: Speed & Agility Training in Nashville, TN | NextPhaze
 description: Build better movement, acceleration, footwork and change of direction with speed and agility training from NextPhaze in Nashville.
 service:
   eyebrow: Speed and Agility
   title: Speed and Agility Training for Game Movement
-  intro: Train acceleration, footwork, body control, and change of direction with a clear connection to sport.
+  intro: Train acceleration, footwork, body control, and change of direction with a clear connection to sport in Nashville, Tennessee.
   price:
   price_suffix: per session
   image: /images/training-lane.webp

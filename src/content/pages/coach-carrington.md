@@ -1,7 +1,7 @@
 ---
 _schema: page_builder
-title: Coach Carrington Thompson | NextPhaze Nashville
-description: Meet NextPhaze coach Carrington Thompson, former Western Michigan
+title: Carrington Thompson | NextPhaze Athletic Training
+description: Meet Carrington Thompson, a former Western Michigan wide receiver who brings collegiate and professional indoor football experience to NextPhaze training.
 preload_image: /images/carrington-coach-portrait.webp
 content_blocks:
   - _type: coach_hero

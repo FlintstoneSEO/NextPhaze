@@ -10,8 +10,18 @@ export async function getStaticPaths() {
 }
 const { page } = Astro.props;
 const content = page.data;
+const pageName = content.service.eyebrow === 'Receiver Skills' ? 'Wide Receiver Training' : content.service.eyebrow;
 ---
-<BaseLayout title={content.title} description={content.description}>
+<BaseLayout
+  title={content.title}
+  description={content.description}
+  preloadImage={content.service.image}
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'Training', path: '/training/' },
+    { name: pageName, path: Astro.url.pathname }
+  ]}
+>
   <editable-component data-component="service_page" data-prop="service">
     <ServicePage {...content.service} />
   </editable-component>

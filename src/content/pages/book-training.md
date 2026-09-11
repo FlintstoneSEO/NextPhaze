@@ -1,6 +1,6 @@
 ---
 _schema: page_builder
-title: Book Athletic Training in Nashville | NextPhaze
+title: Book Athletic Training in Nashville, TN | NextPhaze
 description: Book NextPhaze training in Nashville. Choose $30 group training or $60 one-on-one coaching and select an available session.
 preload_image:
 content_blocks:
